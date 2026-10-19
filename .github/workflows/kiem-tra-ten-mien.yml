@@ -1,0 +1,30 @@
+name: kiem-tra-ten-mien
+on:
+  workflow_dispatch:
+  push:
+    paths: ['.github/workflows/kiem-tra-ten-mien.yml']
+permissions:
+  pages: read
+  contents: read
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: DNS
+        run: |
+          sudo apt-get install -y -qq dnsutils >/dev/null 2>&1 || true
+          D=social-content-ai.diepbaokhanh.com
+          for t in CNAME A AAAA CAA; do echo "== $t $D"; dig +short $t $D; done
+          echo "== NS diepbaokhanh.com"; dig +short NS diepbaokhanh.com
+          echo "== CAA diepbaokhanh.com"; dig +short CAA diepbaokhanh.com
+          echo "== A @1.1.1.1"; dig +short A $D @1.1.1.1
+      - name: Chung chi dang phuc vu
+        run: |
+          echo | openssl s_client -connect social-content-ai.diepbaokhanh.com:443 -servername social-content-ai.diepbaokhanh.com 2>/dev/null | openssl x509 -noout -subject -issuer -dates -ext subjectAltName || true
+          curl -sI http://social-content-ai.diepbaokhanh.com | head -8 || true
+      - name: Pages API
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh api repos/${{ github.repository }}/pages || true
+          gh api repos/${{ github.repository }}/pages/health || true
