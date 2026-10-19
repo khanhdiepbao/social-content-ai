@@ -36,7 +36,7 @@ jobs:
           done
           echo "== DNS"; dig +short CNAME $NAME @1.1.1.1; dig +short A $NAME @1.1.1.1
           curl -s -o /dev/null -w "HTTP %{http_code}\n" -m 15 http://$NAME/ || true
-          echo | timeout 15 openssl s_client -connect $NAME:443 -servername $NAME 2>/dev/null | openssl x509 -noout -subject 2>/dev/null || true
+          echo | timeout 15 openssl s_client -connect $NAME:443 -servername $NAME 2>/dev/null | openssl x509 -noout -subject -issuer -dates 2>/dev/null; curl -s -o /dev/null -w "HTTPS %{http_code} ssl_verify=%{ssl_verify_result}\n" -m 15 https://$NAME/ || true
           gh api repos/${{ github.repository }}/pages --jq '{cname, status, https_certificate, https_enforced}' || true
       - name: Ghi ket qua
         if: always()
