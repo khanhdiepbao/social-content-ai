@@ -1,0 +1,41 @@
+name: trien-khai-dns
+on: { push: { branches: [trien-khai-dns] } }
+permissions: { pages: read, contents: write }
+jobs:
+  dns:
+    runs-on: ubuntu-latest
+    env:
+      CF_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      ZONE: diepbaokhanh.com
+      NAME: aquarius-ai.diepbaokhanh.com
+      TARGET: khanhdiepbao.github.io
+    steps:
+      - name: Tao hoac cap nhat ban ghi CNAME tren Cloudflare
+        run: |
+          exec > >(tee -a /tmp/ketqua.txt) 2>&1
+          if [ -z "$CF_TOKEN" ]; then echo "CHUA CO SECRET CLOUDFLARE_API_TOKEN"; exit 0; fi
+          api() { curl -sS -H "Authorization: Bearer $CF_TOKEN" -H "Content-Type: application/json" "$@"; }
+          ZID=$(api "https://api.cloudflare.com/client/v4/zones?name=$ZONE" | jq -r '.result[0].id')
+          echo "zone_id: ${ZID:0:6}..."
+          [ "$ZID" = "null" ] && { echo "KHONG TIM THAY ZONE (token thieu quyen?)"; exit 0; }
+          REC=$(api "https://api.cloudflare.com/client/v4/zones/$ZID/dns_records?name=$NAME")
+          RID=$(echo "$REC" | jq -r '.result[0].id // empty')
+          BODY=$(jq -nc --arg n "$NAME" --arg c "$TARGET" '{type:"CNAME",name:$n,content:$c,proxied:false,ttl:1}')
+          if [ -n "$RID" ]; then R=$(api -X PUT "https://api.cloudflare.com/client/v4/zones/$ZID/dns_records/$RID" --data "$BODY"); echo "Cap nhat ban ghi cu"
+          else R=$(api -X POST "https://api.cloudflare.com/client/v4/zones/$ZID/dns_records" --data "$BODY"); echo "Tao ban ghi moi"; fi
+          echo "$R" | jq -c '{success, errors, record: (.result | {type,name,content,proxied})}'
+      - name: Kiem tra DNS va chung chi
+        env: { GH_TOKEN: "${{ github.token }}" }
+        run: |
+          exec > >(tee -a /tmp/ketqua.txt) 2>&1
+          sleep 30
+          echo "== DNS"; dig +short CNAME $NAME @1.1.1.1; dig +short A $NAME @1.1.1.1
+          curl -s -o /dev/null -w "HTTP %{http_code}\n" -m 15 http://$NAME/ || true
+          echo | timeout 15 openssl s_client -connect $NAME:443 -servername $NAME 2>/dev/null | openssl x509 -noout -subject 2>/dev/null || true
+          gh api repos/${{ github.repository }}/pages --jq '{cname, status, https_certificate, https_enforced}' || true
+      - name: Ghi ket qua
+        if: always()
+        run: |
+          sleep 2; cd /tmp && rm -rf d && mkdir d && cd d && git init -q && git checkout -q -b diag-ten-mien
+          cp /tmp/ketqua.txt ketqua.txt && git -c user.name=diag -c user.email=diag@local add ketqua.txt && git -c user.name=diag -c user.email=diag@local commit -qm ketqua
+          git push -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}" diag-ten-mien
