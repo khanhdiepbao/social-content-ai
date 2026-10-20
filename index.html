@@ -308,6 +308,8 @@ fieldset{border:0;margin:0;padding:0;display:grid;gap:9px;min-width:0}
 .toast{font-size:14px;font-weight:600;color:var(--green-d);min-height:1em}
 
 footer{background:#fff;color:var(--mute);font-size:14px;border-top:1px solid var(--line)}
+footer .author-link{color:var(--ink);font-weight:600;text-decoration:underline;text-decoration-color:var(--green);text-underline-offset:3px}
+footer .author-link:hover{color:var(--green-d)}
 footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;padding-block:28px}
 
 .mbar{position:fixed;left:0;right:0;bottom:0;z-index:30;background:rgba(255,255,255,.95);backdrop-filter:blur(12px);color:var(--ink);border-top:1px solid var(--line);padding:10px max(16px,env(safe-area-inset-right,0px)) calc(10px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px));display:none;align-items:center;justify-content:space-between;gap:12px;transform:translateY(110%);transition:transform .25s ease}
@@ -670,7 +672,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;
 <footer>
   <div class="wrap">
     <span>Aquarius AI · Quy trình content social AI</span>
-    <span>Biên soạn: Diệp Bảo Khánh · 092 979 79 86</span>
+    <span>Biên soạn: <a class="author-link" href="https://diepbaokhanh.com" target="_blank" rel="noopener">Diệp Bảo Khánh</a> · 092 979 79 86</span>
   </div>
 </footer>
 
