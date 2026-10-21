@@ -248,6 +248,24 @@ fieldset{border:0;margin:0;padding:0;display:grid;gap:8px;min-width:0}
 .done h3 span{color:var(--green-d)}
 .linkbtn{background:none;border:0;color:var(--ink2);text-decoration:underline;cursor:pointer;font:inherit;font-size:14px;justify-self:start;padding:0}
 .toast{font-size:14px;font-weight:600;color:var(--green-d);min-height:1em}
+/* Popup cảm ơn sau khi gửi đăng ký */
+.modal{position:fixed;inset:0;z-index:60;display:grid;place-items:center;padding:max(16px,env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) max(16px,env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px));background:rgba(15,31,23,.45);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);opacity:0;transition:opacity .25s}
+.modal.show{opacity:1}
+.dialog{position:relative;width:100%;max-width:460px;max-height:100%;overflow:auto;background:#fff;border-radius:22px;padding:32px 28px 26px;text-align:center;display:grid;gap:14px;box-shadow:0 40px 80px -30px rgba(15,31,23,.5);transform:translateY(16px) scale(.97);transition:transform .3s cubic-bezier(.2,.8,.2,1)}
+.modal.show .dialog{transform:none}
+.dialog .ok{width:64px;height:64px;margin:0 auto;border-radius:50%;background:var(--green-l);color:var(--green-d);display:grid;place-items:center}
+.dialog .ok svg{width:32px;height:32px;fill:none;stroke:currentColor;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+.dialog h3{font-size:22px}
+.dialog .lead{color:var(--ink2);font-size:15px}
+.dialog dl{margin:4px 0 0;text-align:left;border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.dialog dl div{display:grid;grid-template-columns:110px minmax(0,1fr);gap:12px;padding:10px 14px;font-size:14px}
+.dialog dl div+div{border-top:1px solid var(--line)}
+.dialog dt{color:var(--mute)}
+.dialog dd{margin:0;font-weight:600;word-break:break-word}
+.dialog .mailnote{font-size:13px;color:var(--ink2);background:var(--tint);border-radius:12px;padding:10px 12px}
+.dialog .acts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:4px}
+.dialog .x{position:absolute;top:12px;right:12px;width:34px;height:34px;border-radius:50%;border:0;background:var(--tint);color:var(--ink2);font-size:20px;line-height:1;cursor:pointer}
+@media (max-width:420px){.dialog .acts{grid-template-columns:minmax(0,1fr)}.dialog dl div{grid-template-columns:92px minmax(0,1fr)}}
 
 footer{border-top:1px solid var(--line);font-size:14px;color:var(--mute)}
 footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;padding-block:24px}
@@ -619,12 +637,12 @@ footer .author-link:hover{color:var(--green-d)}
             </div>
             <div class="field"><label for="fNote">Ghi chú</label><textarea id="fNote" placeholder="Ngành hàng, công cụ AI đang dùng, thời gian muốn bắt đầu…"></textarea></div>
             <div class="total"><span id="totalLabel">Gói 1 · giá ưu đãi</span><b id="totalPrice">699.000 đ</b></div>
-            <button class="btn btn-primary" type="submit">Tạo phiếu đăng ký</button>
+            <button class="btn btn-primary" type="submit" id="submitBtn">Gửi đăng ký</button>
           </form>
 
           <div class="done" id="done" hidden style="display:flex;flex-direction:column;gap:14px">
             <h3>Mã phiếu <span id="dCode"></span></h3>
-            <p>Bước cuối: gửi phiếu này qua Zalo <b style="color:var(--ink);user-select:all">092 979 79 86</b> để giữ giá ưu đãi.</p>
+            <p id="doneMsg">Bước cuối: gửi phiếu này qua Zalo <b style="color:var(--ink);user-select:all">092 979 79 86</b> để giữ giá ưu đãi.</p>
             <pre id="dText"></pre>
             <div class="acts">
               <button class="btn btn-line" type="button" id="copyBtn">Sao chép phiếu</button>
@@ -646,6 +664,21 @@ footer .author-link:hover{color:var(--green-d)}
   </div>
 </footer>
 
+<div class="modal" id="thanks" hidden role="dialog" aria-modal="true" aria-labelledby="thanksTitle">
+  <div class="dialog">
+    <button class="x" type="button" id="thanksX" aria-label="Đóng">×</button>
+    <span class="ok" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg></span>
+    <h3 id="thanksTitle">Đăng ký thành công</h3>
+    <p class="lead" id="thanksLead"></p>
+    <dl id="thanksList"></dl>
+    <p class="mailnote" id="thanksMail"></p>
+    <div class="acts">
+      <a class="btn btn-line" href="https://zalo.me/0929797986" target="_blank" rel="noopener">Nhắn Zalo</a>
+      <button class="btn btn-primary" type="button" id="thanksClose">Hoàn tất</button>
+    </div>
+  </div>
+</div>
+
 <div class="mbar" id="mbar" aria-hidden="true">
   <span>Chỉ từ<b>699.000 đ</b></span>
   <a class="btn btn-primary" href="#dang-ky" tabindex="-1">Đăng ký</a>
@@ -658,6 +691,8 @@ footer .author-link:hover{color:var(--green-d)}
     "2":{name:"Gói 2 · Chuẩn hoá thương hiệu",price:"1.999.000 đ",list:"2.999.000 đ"},
     "3":{name:"Gói 3 · Đồng hành 12 tháng",price:"2.499.000 đ",list:"4.999.000 đ"}
   };
+  // Ứng dụng web Apps Script nhận đơn: ghi Google Sheets, email cho anh Khánh và email xác nhận cho khách
+  var ENDPOINT="";
   var $=function(id){return document.getElementById(id)};
   var form=$("orderForm"), done=$("done");
 
@@ -700,9 +735,45 @@ footer .author-link:hover{color:var(--green-d)}
     if($("fCompany").value.trim())lines.push("Doanh nghiệp: "+$("fCompany").value.trim());
     if(email)lines.push("Email: "+email);
     if($("fNote").value.trim())lines.push("Ghi chú: "+$("fNote").value.trim());
-    $("dCode").textContent=code;$("dText").textContent=lines.join("\n");$("toast").textContent="";
-    form.hidden=true;done.hidden=false;
+    var data={code:code,plan:p.name,price:p.price,list:p.list,name:name,phone:phone,company:$("fCompany").value.trim(),email:email,note:$("fNote").value.trim(),page:location.href};
+    function fallback(){
+      $("dCode").textContent=code;$("dText").textContent=lines.join("\n");$("toast").textContent="";
+      form.hidden=true;done.hidden=false;
+    }
+    if(!ENDPOINT){fallback();return}
+    var btn=$("submitBtn");btn.disabled=true;btn.textContent="Đang gửi…";
+    fetch(ENDPOINT,{method:"POST",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify(data)})
+      .then(function(r){return r.json()})
+      .then(function(res){
+        if(!res||!res.ok)throw new Error(res&&res.error||"send_failed");
+        showThanks(data,res.code||code,!!res.emailed);
+        form.reset();$("plan1").checked=true;updateTotal();
+      })
+      .catch(function(){
+        fallback();
+        $("doneMsg").innerHTML='Hệ thống chưa nhận được đăng ký. Anh chị gửi giúp phiếu này qua Zalo <b style="color:var(--ink);user-select:all">092 979 79 86</b> để giữ giá ưu đãi.';
+      })
+      .then(function(){btn.disabled=false;btn.textContent="Gửi đăng ký"});
   });
+
+  // Popup cảm ơn
+  var thanks=$("thanks"),lastFocus=null;
+  function showThanks(d,code,emailed){
+    $("thanksLead").textContent="Cảm ơn "+d.name+" đã đăng ký "+d.plan.split(" · ")[0]+". Chúng tôi sẽ liên hệ qua số "+d.phone+" để xác nhận và hướng dẫn thanh toán.";
+    var rows=[["Mã phiếu",code],["Gói",d.plan],["Giá ưu đãi",d.price],["Điện thoại",d.phone]];
+    if(d.company)rows.push(["Doanh nghiệp",d.company]);
+    if(d.email)rows.push(["Email",d.email]);
+    var dl=$("thanksList");dl.textContent="";
+    rows.forEach(function(r){var w=document.createElement("div"),dt=document.createElement("dt"),dd=document.createElement("dd");dt.textContent=r[0];dd.textContent=r[1];w.appendChild(dt);w.appendChild(dd);dl.appendChild(w)});
+    $("thanksMail").textContent=emailed?("Email xác nhận đã được gửi tới "+d.email+". Anh chị kiểm tra cả hộp thư Quảng cáo hoặc Spam."):"Anh chị lưu lại mã phiếu "+code+" để tiện trao đổi khi chúng tôi liên hệ.";
+    lastFocus=document.activeElement;thanks.hidden=false;
+    requestAnimationFrame(function(){thanks.classList.add("show");$("thanksClose").focus()});
+  }
+  function closeThanks(){thanks.classList.remove("show");setTimeout(function(){thanks.hidden=true;if(lastFocus)lastFocus.focus()},250)}
+  $("thanksClose").addEventListener("click",closeThanks);
+  $("thanksX").addEventListener("click",closeThanks);
+  thanks.addEventListener("click",function(e){if(e.target===thanks)closeThanks()});
+  addEventListener("keydown",function(e){if(e.key==="Escape"&&!thanks.hidden)closeThanks()});
 
   $("copyBtn").addEventListener("click",function(){
     var t=$("dText").textContent;
