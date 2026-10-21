@@ -1,0 +1,15 @@
+== POST
+exit=0
+== headers (cuoi)
+HTTP/2 302 
+content-type: application/binary
+access-control-allow-origin: *
+x-content-type-options: nosniff
+HTTP/2 200 
+content-type: application/json; charset=utf-8
+x-content-type-options: nosniff
+access-control-allow-origin: *
+== body
+{"ok":true,"code":"AQA-2110-902","emailed":true}
+== GET
+{"ok":true,"service":"Aquarius AI"}
