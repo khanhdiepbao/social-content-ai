@@ -106,7 +106,6 @@ nav.links .btn{padding:11px 20px;font-size:14px;color:#fff}
 
 /* Vấn đề */
 .pain{border-top:4px solid var(--pink)}
-.pain .ic{width:44px;height:44px;border-radius:12px;background:var(--pink-l);color:var(--pink-d);display:grid;place-items:center}
 
 /* Biểu đồ vòng */
 .chart-card{align-items:center;justify-content:center;padding:32px}
@@ -127,6 +126,103 @@ nav.links .btn{padding:11px 20px;font-size:14px;color:#fff}
 .tag.ai{background:var(--green-l);color:var(--green-d)}
 .tag.you{background:var(--amber-l);color:var(--amber-d)}
 @media (max-width:560px){.legend-list li{grid-template-columns:40px minmax(0,1fr)}.legend-list .tag{grid-column:2;justify-self:start}.chart-card{padding:20px}}
+
+/* Motion: mô tả bằng chuyển động. Khối .mo chỉ chạy khi hiện trên màn hình (JS gắn .play).
+   Trạng thái gốc của mọi phần tử là trạng thái cuối, nên khi tắt chuyển động trang vẫn đầy đủ. */
+.mo:not(.play),.mo:not(.play) *,.mo:not(.play) *::before,.mo:not(.play) *::after{animation-play-state:paused!important}
+
+/* Hero: dải bài đăng thành phẩm chạy ngang */
+.stream{margin-top:clamp(36px,5vw,52px);overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.stream-row{display:flex;align-items:center;width:max-content;padding:12px 0 28px;animation:marquee 48s linear infinite}
+.stream:hover .stream-row{animation-play-state:paused}
+.stream-row>*{flex:none;margin-right:18px}
+.stream img{display:block;width:150px;height:150px;border-radius:18px;object-fit:cover;box-shadow:var(--shadow)}
+.stream img:nth-child(even){transform:translateY(14px)}
+.stream .st{display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border-radius:999px;background:#fff;border:1px solid var(--line);box-shadow:var(--shadow);font-size:14px;font-weight:700;white-space:nowrap}
+.stream .st i{width:8px;height:8px;border-radius:50%;background:var(--c)}
+@keyframes marquee{to{transform:translateX(-50%)}}
+@media (max-width:640px){.stream img{width:110px;height:110px;border-radius:14px}.stream .st{font-size:13px;padding:8px 13px}}
+
+/* Vấn đề: mỗi thẻ là một cảnh nhỏ chạy lặp 6 giây */
+.mini{height:128px;border-radius:14px;background:var(--tint);display:grid;place-items:center;position:relative;overflow:hidden;margin-bottom:4px}
+.dep{display:flex;align-items:center;gap:14px}
+.dep .me{width:44px;height:44px;border-radius:50%;background:var(--green-l);color:var(--green-d);display:grid;place-items:center;animation:away 6s infinite both}
+.dep .me svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round}
+.dep .row{display:flex;gap:6px}
+.dep .row i{width:14px;height:36px;border-radius:5px;background:var(--green)}
+.dep .row .f{animation:depf 6s infinite both;animation-delay:calc(var(--d) * .3s)}
+.dep .row .e{background:transparent;box-shadow:inset 0 0 0 2px var(--pink);animation:depe 6s infinite both}
+.mini .off{position:absolute;left:calc(50% - 112px);top:16px;font-size:11px;font-weight:700;padding:3px 8px;border-radius:999px;background:var(--pink-l);color:var(--pink-d);animation:badge 6s infinite both}
+@keyframes away{0%,38%{opacity:1;filter:none}48%,88%{opacity:.35;filter:grayscale(1)}100%{opacity:1;filter:none}}
+@keyframes depf{0%{background:var(--line)}8%,86%{background:var(--green)}100%{background:var(--line)}}
+@keyframes depe{0%,46%{box-shadow:inset 0 0 0 2px var(--line)}54%,88%{box-shadow:inset 0 0 0 2px var(--pink)}100%{box-shadow:inset 0 0 0 2px var(--line)}}
+@keyframes badge{0%,42%{opacity:0;transform:scale(.6)}50%,88%{opacity:1;transform:none}100%{opacity:0;transform:scale(.6)}}
+
+.voice{display:flex;gap:12px;align-items:center;position:relative}
+.voice .pc{width:62px;height:80px;background:#fff;border:1px solid var(--line);display:grid;align-content:start;gap:6px;padding:0 0 8px;overflow:hidden;box-shadow:var(--shadow)}
+.voice .pc b{height:16px;background:var(--c)}
+.voice .pc small{font-size:16px;line-height:1;padding:0 8px;color:var(--c)}
+.voice .pc i{height:5px;margin:0 8px;border-radius:3px;background:var(--line)}
+.voice .a{border-radius:4px;font-family:Georgia,serif;animation:wob1 3s ease-in-out infinite alternate}
+.voice .b{border-radius:18px;font-family:"Courier New",monospace;animation:wob2 3s ease-in-out infinite alternate}
+.voice .c{border-radius:10px;font-weight:800;animation:wob3 3s ease-in-out infinite alternate}
+.voice .err{position:absolute;z-index:2;left:50%;top:-14px;translate:-50% 0;font-size:11px;font-weight:700;padding:3px 8px;border-radius:999px;background:var(--pink);color:#fff;white-space:nowrap;animation:badge 6s infinite both}
+@keyframes wob1{from{transform:rotate(-7deg) translateY(4px)}to{transform:rotate(-2deg)}}
+@keyframes wob2{from{transform:rotate(3deg)}to{transform:rotate(8deg) translateY(-6px)}}
+@keyframes wob3{from{transform:rotate(-2deg) translateY(-3px)}to{transform:rotate(5deg) translateY(4px)}}
+
+.flat{width:200px;height:104px;overflow:visible}
+.flat rect{fill:var(--green);opacity:.35;transform-box:fill-box;transform-origin:bottom;animation:barg 6s infinite both;animation-delay:calc(var(--d) * .15s)}
+.flat path{fill:none;stroke:var(--pink);stroke-width:3;stroke-linecap:round;stroke-dasharray:1;animation:lined 6s infinite both}
+.flat text{font-family:var(--f);font-size:10px;font-weight:700}
+@keyframes barg{0%{transform:scaleY(0)}25%,90%{transform:scaleY(1)}100%{transform:scaleY(0)}}
+@keyframes lined{0%,30%{stroke-dashoffset:1}60%,90%{stroke-dashoffset:0}100%{stroke-dashoffset:1}}
+
+/* Vòng chu trình: từng giai đoạn sáng lên theo chiều kim đồng hồ, chấm trắng chạy quanh vòng, danh sách bên phải sáng theo */
+.loop .seg{transform-box:view-box;transform-origin:200px 186px;animation:seg 12.5s infinite both;animation-delay:calc(var(--i) * 2.5s - 12.5s)}
+.loop .lbl{animation:lbl 12.5s infinite both;animation-delay:calc(var(--i) * 2.5s - 12.5s)}
+.loop .orb{transform-box:view-box;transform-origin:200px 186px;animation:orb 12.5s linear infinite}
+.loop .ring{fill:none;stroke:var(--line);stroke-width:1.5;stroke-dasharray:3 6;transform-box:view-box;transform-origin:200px 186px;animation:orb 40s linear infinite reverse}
+.loop .core{transform-box:view-box;transform-origin:200px 186px;animation:core 2.5s ease-in-out infinite}
+.legend-list li{animation:leg 12.5s infinite both;animation-delay:calc(var(--i) * 2.5s - 12.5s)}
+@keyframes seg{0%,17%{opacity:1;transform:scale(1.05)}23%,94%{opacity:.3;transform:scale(1)}100%{opacity:1;transform:scale(1.05)}}
+@keyframes lbl{0%,17%{opacity:1}23%,94%{opacity:.35}100%{opacity:1}}
+@keyframes leg{0%,17%{opacity:1;transform:translateX(6px)}23%,94%{opacity:.45;transform:none}100%{opacity:1;transform:translateX(6px)}}
+@keyframes orb{to{transform:rotate(360deg)}}
+@keyframes core{50%{transform:scale(1.04)}}
+
+/* Giá trị: biểu tượng tự diễn tả ý của thẻ */
+.value .ic{width:56px;height:56px;border-radius:16px}
+.value .ic svg{width:28px;height:28px}
+.value .ic svg *{transform-box:fill-box;transform-origin:center}
+.value .ic circle{fill:var(--bg)}
+.k1{animation:kx1 3.2s ease-in-out infinite}.k2{animation:kx2 3.2s ease-in-out infinite}.k3{animation:kx3 3.2s ease-in-out infinite}
+@keyframes kx1{50%{transform:translateX(-8px)}}@keyframes kx2{50%{transform:translateX(7px)}}@keyframes kx3{50%{transform:translateX(-6px)}}
+.draw{stroke-dasharray:1;animation:draw 3.2s ease-in-out infinite both}
+@keyframes draw{0%,12%{stroke-dashoffset:1}45%,85%{stroke-dashoffset:0}100%{stroke-dashoffset:1}}
+.ah{animation:ah 3.2s ease-in-out infinite both}
+@keyframes ah{0%,38%{opacity:0}50%,85%{opacity:1}100%{opacity:0}}
+.l1{animation:l1 3.2s ease-in-out infinite}.l3{animation:l3 3.2s ease-in-out infinite}
+@keyframes l1{50%{transform:translateY(-3px)}}@keyframes l3{50%{transform:translateY(2.5px)}}
+.inf0{opacity:.3}
+.inf{stroke-dasharray:.28 .72;animation:inf 2.6s linear infinite}
+@keyframes inf{to{stroke-dashoffset:-1}}
+.sw1{animation:sw1 3.2s ease-in-out infinite}.sw2{animation:sw2 3.2s ease-in-out infinite}
+@keyframes sw1{50%{transform:translateX(3px)}}@keyframes sw2{50%{transform:translateX(-3px)}}
+
+/* Ba bước: số hiện lần lượt, vạch nối chạy sang bước kế */
+.steps .step .n{animation:popn .5s cubic-bezier(.2,1.4,.4,1) both;animation-delay:calc(var(--i) * .7s)}
+.steps .step::after{animation:cn .5s ease both;animation-delay:calc(var(--i) * .7s + .35s)}
+.steps .step .when{animation:rise .5s ease both;animation-delay:calc(var(--i) * .7s + .3s)}
+@keyframes popn{from{transform:scale(0)}}
+@keyframes cn{from{width:0}}
+@keyframes rise{from{opacity:0;transform:translateY(10px)}}
+
+/* Bảng giá: gạch giá niêm yết, nhãn giảm giá bật lên */
+.price .old s{position:relative;text-decoration:none}
+.price .old s::after{content:"";position:absolute;left:-2px;right:-2px;top:52%;height:1.5px;background:currentColor;transform-origin:left;animation:strike .6s ease both;animation-delay:.4s}
+.price .off{animation:pop .45s cubic-bezier(.2,1.4,.4,1) both;animation-delay:.9s}
+@keyframes strike{from{transform:scaleX(0)}}
 
 /* Giá trị */
 .value .ic{width:48px;height:48px;border-radius:14px;display:grid;place-items:center}
@@ -230,7 +326,7 @@ nav.links .btn{padding:11px 20px;font-size:14px;color:#fff}
 .on .rep li{animation:pop .4s forwards;animation-delay:calc(1s + var(--d) * 250ms)}
 .rep li::before{content:"";width:10px;height:10px;border-radius:3px;background:var(--c)}
 @media (max-width:640px){.cal{grid-template-columns:repeat(7,30px);gap:6px;padding:12px}.cal b{width:30px;height:26px}.tiles{grid-template-columns:repeat(3,74px)}.tiles img,.tiles .vid{width:74px;height:74px}.week{grid-template-columns:repeat(5,52px);gap:6px;padding:12px}.week div b{width:52px;height:84px}.rep{grid-template-columns:auto;gap:12px;padding:14px 18px}.bars{height:96px}.rep ul{grid-template-columns:repeat(3,auto);gap:6px 12px;font-size:12px}.appr{grid-template-columns:84px minmax(0,1fr)}.appr img{width:84px;height:84px}.stamp{right:8px;top:-16px;font-size:12px;padding:5px 10px;border-width:2px}.appr .ln{padding-right:0}.chip{font-size:12px;padding:6px 11px}}
-@media (prefers-reduced-motion:reduce){.scene *{animation-duration:.01s!important;animation-delay:0s!important}}
+@media (prefers-reduced-motion:reduce){.chip,.stamp,.rep li,.tiles img,.tiles .vid,.post,.ln .star{opacity:1!important;transform:none!important}.ln em{clip-path:none!important}.cal b::after{transform:none!important}.bars i{height:var(--h)!important}.cap-ln{width:var(--w)!important}.stamp{transform:rotate(-8deg)!important}}
 
 /* Thành phẩm */
 .result{margin-top:clamp(48px,6vw,72px)}
@@ -391,10 +487,11 @@ footer .author-link:hover{color:var(--green-d)}
         </div>
         <p class="from">Chỉ từ <b>699.000 đ</b> · thanh toán một lần</p>
       </div>
+      <div class="stream mo" aria-hidden="true"><div class="stream-row"><img src="img/case-study/tp-1.jpg" alt="" width="240" height="240"><img src="img/case-study/tp-2.jpg" alt="" width="240" height="240"><img src="img/case-study/tp-3.jpg" alt="" width="240" height="240"><span class="st" style="--c:var(--amber)"><i></i>✓ Đã duyệt</span><img src="img/case-study/tp-4.jpg" alt="" width="240" height="240"><img src="img/case-study/tp-5.jpg" alt="" width="240" height="240"><img src="img/case-study/tp-6.jpg" alt="" width="240" height="240"><span class="st" style="--c:var(--teal)"><i></i>Lên lịch 09:00</span><img src="img/case-study/tp-7.jpg" alt="" width="240" height="240"><img src="img/case-study/tp-8.jpg" alt="" width="240" height="240"><img src="img/case-study/tp-9.jpg" alt="" width="240" height="240"><span class="st" style="--c:var(--pink)"><i></i>Báo cáo tháng</span><img src="img/case-study/tp-1.jpg" alt="" width="240" height="240"><img src="img/case-study/tp-2.jpg" alt="" width="240" height="240"><img src="img/case-study/tp-3.jpg" alt="" width="240" height="240"><span class="st" style="--c:var(--amber)"><i></i>✓ Đã duyệt</span><img src="img/case-study/tp-4.jpg" alt="" width="240" height="240"><img src="img/case-study/tp-5.jpg" alt="" width="240" height="240"><img src="img/case-study/tp-6.jpg" alt="" width="240" height="240"><span class="st" style="--c:var(--teal)"><i></i>Lên lịch 09:00</span><img src="img/case-study/tp-7.jpg" alt="" width="240" height="240"><img src="img/case-study/tp-8.jpg" alt="" width="240" height="240"><img src="img/case-study/tp-9.jpg" alt="" width="240" height="240"><span class="st" style="--c:var(--pink)"><i></i>Báo cáo tháng</span></div></div>
       <div class="stats">
         <div class="stat reveal"><b>1 lần</b><span>setup hệ thống</span></div>
-        <div class="stat reveal"><b>100%</b><span>bài qua anh chị duyệt</span></div>
-        <div class="stat reveal"><b>5</b><span>giai đoạn khép kín</span></div>
+        <div class="stat reveal"><b data-to="100" data-suf="%">100%</b><span>bài qua anh chị duyệt</span></div>
+        <div class="stat reveal"><b data-to="5">5</b><span>giai đoạn khép kín</span></div>
         <div class="stat reveal"><b>∞</b><span>bài viết, tháng sử dụng</span></div>
       </div>
     </div>
@@ -408,9 +505,25 @@ footer .author-link:hover{color:var(--green-d)}
         <h2>Đăng một bài thì dễ, làm content đều và tốt lên mới khó</h2>
       </div>
       <div class="g3">
-        <article class="card pain reveal"><span class="ic" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg></span><h3>Phụ thuộc một người</h3><p>Người phụ trách nghỉ hay agency đổi nhân sự là fanpage chững lại.</p></article>
-        <article class="card pain reveal"><span class="ic" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M4 12h10M4 18h7"/></svg></span><h3>Mỗi bài một giọng</h3><p>Dùng AI rời rạc, thương hiệu thiếu nhất quán, dễ sai giá, sai khuyến mãi.</p></article>
-        <article class="card pain reveal"><span class="ic" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7l6 6 4-4 8 8"/><path d="M14 17h7v-7"/></svg></span><h3>Làm nhiều không tốt lên</h3><p>Đăng xong không đo, tháng sau lặp lại cách cũ, công sức không thành kết quả.</p></article>
+        <article class="card pain reveal">
+          <div class="mini mo" aria-hidden="true">
+            <div class="dep"><span class="me"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg></span><span class="row"><i class="f" style="--d:0"></i><i class="f" style="--d:1"></i><i class="f" style="--d:2"></i><i class="f" style="--d:3"></i><i class="e"></i><i class="e"></i><i class="e"></i><i class="e"></i></span></div>
+            <span class="off">Nghỉ việc</span>
+          </div>
+          <h3>Phụ thuộc một người</h3><p>Người phụ trách nghỉ là fanpage chững lại.</p>
+        </article>
+        <article class="card pain reveal">
+          <div class="mini mo" aria-hidden="true">
+            <div class="voice"><span class="pc a" style="--c:var(--green)"><b></b><small>Aa</small><i></i><i></i></span><span class="pc b" style="--c:var(--violet)"><b></b><small>Aa</small><i></i><i></i></span><span class="pc c" style="--c:var(--amber)"><b></b><small>Aa</small><i></i><i></i></span><em class="err">Sai giá</em></div>
+          </div>
+          <h3>Mỗi bài một giọng</h3><p>Dùng AI rời rạc, thương hiệu thiếu nhất quán.</p>
+        </article>
+        <article class="card pain reveal">
+          <div class="mini mo" aria-hidden="true">
+            <svg class="flat" viewBox="0 0 200 104"><rect x="22" y="70" width="20" height="18" rx="4" style="--d:0"/><rect x="54" y="58" width="20" height="30" rx="4" style="--d:1"/><rect x="86" y="46" width="20" height="42" rx="4" style="--d:2"/><rect x="118" y="34" width="20" height="54" rx="4" style="--d:3"/><rect x="150" y="20" width="20" height="68" rx="4" style="--d:4"/><path pathLength="1" d="M14 60 C 50 55, 80 64, 110 58 S 168 62, 188 59"/><text x="22" y="102" fill="#15803D">Số bài ↑</text><text x="14" y="48" fill="#BE123C">Kết quả →</text></svg>
+          </div>
+          <h3>Làm nhiều không tốt lên</h3><p>Đăng xong không đo, tháng sau lặp lại cách cũ.</p>
+        </article>
       </div>
     </div>
   </section>
@@ -423,40 +536,39 @@ footer .author-link:hover{color:var(--green-d)}
         <h2>Một vòng khép kín, AI làm sản xuất, anh chị giữ quyền quyết định</h2>
         <p>Mỗi tháng content đi qua 5 giai đoạn. Kết quả vòng này là đầu vào của vòng sau.</p>
       </div>
-      <div class="g2">
+      <div class="g2 mo">
         <div class="card chart-card reveal">
-          <!-- Vòng mũi tên khép kín: mỗi đoạn có đầu mũi tên lồng vào khấc của đoạn kế tiếp, chạy theo chiều kim đồng hồ -->
+          <!-- Vòng mũi tên khép kín: mỗi đoạn có đầu mũi tên lồng vào khấc của đoạn kế tiếp; các giai đoạn lần lượt sáng lên theo chiều kim đồng hồ -->
           <svg class="donut loop" viewBox="0 0 420 352" role="img" aria-label="Vòng mũi tên khép kín 5 giai đoạn: Phân tích, Lập kế hoạch, Sản xuất, Báo cáo, Tối ưu, quanh chuẩn thương hiệu">
-            <path d="M203.1 74.0 A112 112 0 0 1 305.5 148.4 L293.7 170.2 L273.5 159.8 A78 78 0 0 0 202.2 108.0 L219.1 92.9 Z" fill="#16A34A"/>
-            <path d="M307.4 154.4 A112 112 0 0 1 268.3 274.7 L244.0 270.2 L247.6 247.8 A78 78 0 0 0 274.8 164.0 L294.4 175.4 Z" fill="#0EA5A5"/>
-            <path d="M263.3 278.4 A112 112 0 0 1 136.7 278.4 L133.5 253.9 L155.9 250.4 A78 78 0 0 0 244.1 250.4 L239.2 272.5 Z" fill="#F59E0B"/>
-            <path d="M131.7 274.7 A112 112 0 0 1 92.6 154.4 L114.9 143.8 L125.2 164.0 A78 78 0 0 0 152.4 247.8 L129.8 250.1 Z" fill="#8B5CF6"/>
-            <path d="M94.5 148.4 A112 112 0 0 1 196.9 74.0 L213.9 92.0 L197.8 108.0 A78 78 0 0 0 126.5 159.8 L117.4 139.1 Z" fill="#FB7185"/>
+            <circle class="ring" cx="200" cy="186" r="128"/>
+            <path class="seg" style="--i:0" d="M203.1 74.0 A112 112 0 0 1 305.5 148.4 L293.7 170.2 L273.5 159.8 A78 78 0 0 0 202.2 108.0 L219.1 92.9 Z" fill="#16A34A"/>
+            <path class="seg" style="--i:1" d="M307.4 154.4 A112 112 0 0 1 268.3 274.7 L244.0 270.2 L247.6 247.8 A78 78 0 0 0 274.8 164.0 L294.4 175.4 Z" fill="#0EA5A5"/>
+            <path class="seg" style="--i:2" d="M263.3 278.4 A112 112 0 0 1 136.7 278.4 L133.5 253.9 L155.9 250.4 A78 78 0 0 0 244.1 250.4 L239.2 272.5 Z" fill="#F59E0B"/>
+            <path class="seg" style="--i:3" d="M131.7 274.7 A112 112 0 0 1 92.6 154.4 L114.9 143.8 L125.2 164.0 A78 78 0 0 0 152.4 247.8 L129.8 250.1 Z" fill="#8B5CF6"/>
+            <path class="seg" style="--i:4" d="M94.5 148.4 A112 112 0 0 1 196.9 74.0 L213.9 92.0 L197.8 108.0 A78 78 0 0 0 126.5 159.8 L117.4 139.1 Z" fill="#FB7185"/>
             <g class="n">
               <text x="262.3" y="114.3">1</text><text x="287.4" y="223.1">2</text><text x="191.7" y="280.6">3</text><text x="107.4" y="207.4">4</text><text x="151.1" y="104.6">5</text>
             </g>
-            <text x="287.9" y="76.9" text-anchor="start" class="lb">Phân tích</text>
-            <text x="287.9" y="91.9" text-anchor="start" class="w-ai">AI</text>
-            <text x="323.3" y="238.4" text-anchor="start" class="lb">Lập kế hoạch</text>
-            <text x="323.3" y="253.4" text-anchor="start" class="w-you">Anh chị duyệt</text>
-            <text x="188.3" y="325.5" text-anchor="middle" class="lb">Sản xuất</text>
-            <text x="188.3" y="340.5" text-anchor="middle" class="w-you">Anh chị duyệt</text>
-            <text x="69.4" y="216.1" text-anchor="end" class="lb">Báo cáo</text>
-            <text x="69.4" y="231.1" text-anchor="end" class="w-ai">AI</text>
-            <text x="131.0" y="63.1" text-anchor="end" class="lb">Tối ưu</text>
-            <text x="131.0" y="78.1" text-anchor="end" class="w-ai">AI</text>
-            <text x="200" y="168" text-anchor="middle" font-size="9" font-weight="700" fill="#6B7A72" letter-spacing="1">TRUNG TÂM</text>
-            <text x="200" y="189" text-anchor="middle" font-size="16" font-weight="800" fill="#0F1F17">Chuẩn</text>
-            <text x="200" y="208" text-anchor="middle" font-size="16" font-weight="800" fill="#0F1F17">thương hiệu</text>
+            <circle class="orb" cx="200" cy="58" r="6" fill="#fff" stroke="#0F1F17" stroke-width="2.5"/>
+            <g class="lbl" style="--i:0"><text x="287.9" y="76.9" text-anchor="start" class="lb">Phân tích</text><text x="287.9" y="91.9" text-anchor="start" class="w-ai">AI</text></g>
+            <g class="lbl" style="--i:1"><text x="323.3" y="238.4" text-anchor="start" class="lb">Lập kế hoạch</text><text x="323.3" y="253.4" text-anchor="start" class="w-you">Anh chị duyệt</text></g>
+            <g class="lbl" style="--i:2"><text x="188.3" y="325.5" text-anchor="middle" class="lb">Sản xuất</text><text x="188.3" y="340.5" text-anchor="middle" class="w-you">Anh chị duyệt</text></g>
+            <g class="lbl" style="--i:3"><text x="69.4" y="216.1" text-anchor="end" class="lb">Báo cáo</text><text x="69.4" y="231.1" text-anchor="end" class="w-ai">AI</text></g>
+            <g class="lbl" style="--i:4"><text x="131.0" y="63.1" text-anchor="end" class="lb">Tối ưu</text><text x="131.0" y="78.1" text-anchor="end" class="w-ai">AI</text></g>
+            <g class="core">
+              <text x="200" y="168" text-anchor="middle" font-size="9" font-weight="700" fill="#6B7A72" letter-spacing="1">TRUNG TÂM</text>
+              <text x="200" y="189" text-anchor="middle" font-size="16" font-weight="800" fill="#0F1F17">Chuẩn</text>
+              <text x="200" y="208" text-anchor="middle" font-size="16" font-weight="800" fill="#0F1F17">thương hiệu</text>
+            </g>
           </svg>
         </div>
         <div class="card reveal">
           <ol class="legend-list">
-            <li><span class="n" style="background:var(--green)">1</span><div><b>Phân tích định vị</b><small>Thương hiệu, khách hàng, kỳ trước</small></div><span class="tag ai">AI</span></li>
-            <li><span class="n" style="background:var(--teal)">2</span><div><b>Lập kế hoạch</b><small>Chủ đề, mục tiêu, lịch đăng tháng</small></div><span class="tag you">Anh chị duyệt</span></li>
-            <li><span class="n" style="background:var(--amber)">3</span><div><b>Sản xuất nội dung</b><small>Bài viết, hình ảnh, video, lên lịch</small></div><span class="tag you">Anh chị duyệt</span></li>
-            <li><span class="n" style="background:var(--violet)">4</span><div><b>Báo cáo đánh giá</b><small>Bài nào hiệu quả và vì sao</small></div><span class="tag ai">AI</span></li>
-            <li><span class="n" style="background:var(--pink)">5</span><div><b>Đề xuất tối ưu</b><small>Điều chỉnh có căn cứ cho kỳ sau</small></div><span class="tag ai">AI</span></li>
+            <li style="--i:0"><span class="n" style="background:var(--green)">1</span><div><b>Phân tích định vị</b><small>Thương hiệu, khách hàng, kỳ trước</small></div><span class="tag ai">AI</span></li>
+            <li style="--i:1"><span class="n" style="background:var(--teal)">2</span><div><b>Lập kế hoạch</b><small>Chủ đề, mục tiêu, lịch đăng tháng</small></div><span class="tag you">Anh chị duyệt</span></li>
+            <li style="--i:2"><span class="n" style="background:var(--amber)">3</span><div><b>Sản xuất nội dung</b><small>Bài viết, hình ảnh, video, lên lịch</small></div><span class="tag you">Anh chị duyệt</span></li>
+            <li style="--i:3"><span class="n" style="background:var(--violet)">4</span><div><b>Báo cáo đánh giá</b><small>Bài nào hiệu quả và vì sao</small></div><span class="tag ai">AI</span></li>
+            <li style="--i:4"><span class="n" style="background:var(--pink)">5</span><div><b>Đề xuất tối ưu</b><small>Điều chỉnh có căn cứ cho kỳ sau</small></div><span class="tag ai">AI</span></li>
           </ol>
         </div>
       </div>
@@ -470,13 +582,13 @@ footer .author-link:hover{color:var(--green-d)}
         <span class="eyebrow">Giá trị nhận được</span>
         <h2>Thay đổi cách doanh nghiệp làm content</h2>
       </div>
-      <div class="g3">
-        <article class="card value reveal"><span class="ic" style="background:var(--green-l);color:var(--green-d)" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 6h11M18 6h3M3 12h5M12 12h9M3 18h13M20 18h1"/><circle cx="16" cy="6" r="2"/><circle cx="10" cy="12" r="2"/><circle cx="18" cy="18" r="2"/></svg></span><h3>Chủ động toàn bộ quy trình</h3><p>Kế hoạch, dữ liệu, kết quả nằm trong tay doanh nghiệp, không phụ thuộc agency.</p></article>
-        <article class="card value reveal"><span class="ic" style="background:var(--amber-l);color:var(--amber-d)" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg></span><h3>Kiểm soát từng bài</h3><p>Bài chưa duyệt không lên lịch. AI không tự đăng, không chạy quảng cáo, không xoá bài.</p></article>
-        <article class="card value reveal"><span class="ic" style="background:var(--violet-l);color:var(--violet-d)" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m12 2 10 5-10 5L2 7z"/><path d="m2 17 10 5 10-5"/><path d="m2 12 10 5 10-5"/></svg></span><h3>Nhất quán thương hiệu</h3><p>Giọng văn, hình ảnh, giá, khuyến mãi lấy từ một nguồn chuẩn duy nhất.</p></article>
-        <article class="card value reveal"><span class="ic" style="background:var(--pink-l);color:var(--pink-d)" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 17l6-6 4 4 8-8"/><path d="M14 7h7v7"/></svg></span><h3>Tốt lên sau mỗi tháng</h3><p>Báo cáo chỉ ra bài hiệu quả, đề xuất đi thẳng vào kế hoạch kỳ sau.</p></article>
-        <article class="card value reveal"><span class="ic" style="background:var(--teal-l);color:var(--teal-d)" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 12c-2-2.7-4-4-6-4a4 4 0 0 0 0 8c2 0 4-1.3 6-4zm0 0c2 2.7 4 4 6 4a4 4 0 0 0 0-8c-2 0-4 1.3-6 4z"/></svg></span><h3>Setup một lần</h3><p>Thanh toán một lần, không phí theo bài, không thuê bao hằng tháng.</p></article>
-        <article class="card value reveal"><span class="ic" style="background:var(--green-l);color:var(--green-d)" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M17 2l4 4-4 4"/><path d="M3 11V9a3 3 0 0 1 3-3h15"/><path d="M7 22l-4-4 4-4"/><path d="M21 13v2a3 3 0 0 1-3 3H3"/></svg></span><h3>Claude hoặc ChatGPT</h3><p>Chạy trên công cụ đội anh chị đang dùng, đổi công cụ vẫn giữ dữ liệu.</p></article>
+      <div class="g3 mo">
+        <article class="card value reveal"><span class="ic" style="--bg:var(--green-l);background:var(--bg);color:var(--green-d)" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18"/><circle class="k1" cx="16" cy="6" r="2.4"/><circle class="k2" cx="9" cy="12" r="2.4"/><circle class="k3" cx="17" cy="18" r="2.4"/></svg></span><h3>Chủ động toàn bộ quy trình</h3><p>Kế hoạch, dữ liệu, kết quả nằm trong tay doanh nghiệp, không phụ thuộc agency.</p></article>
+        <article class="card value reveal"><span class="ic" style="--bg:var(--amber-l);background:var(--bg);color:var(--amber-d)" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path class="draw" pathLength="1" d="m9 12 2 2 4-4"/></svg></span><h3>Kiểm soát từng bài</h3><p>Bài chưa duyệt không lên lịch. AI không tự đăng, không chạy quảng cáo, không xoá bài.</p></article>
+        <article class="card value reveal"><span class="ic" style="--bg:var(--violet-l);background:var(--bg);color:var(--violet-d)" aria-hidden="true"><svg viewBox="0 0 24 24"><path class="l1" d="m12 2 10 5-10 5L2 7z"/><path d="m2 12 10 5 10-5"/><path class="l3" d="m2 17 10 5 10-5"/></svg></span><h3>Nhất quán thương hiệu</h3><p>Giọng văn, hình ảnh, giá, khuyến mãi lấy từ một nguồn chuẩn duy nhất.</p></article>
+        <article class="card value reveal"><span class="ic" style="--bg:var(--pink-l);background:var(--bg);color:var(--pink-d)" aria-hidden="true"><svg viewBox="0 0 24 24"><path class="draw" pathLength="1" d="M3 17l6-6 4 4 8-8"/><path class="ah" d="M14 7h7v7"/></svg></span><h3>Tốt lên sau mỗi tháng</h3><p>Báo cáo chỉ ra bài hiệu quả, đề xuất đi thẳng vào kế hoạch kỳ sau.</p></article>
+        <article class="card value reveal"><span class="ic" style="--bg:var(--teal-l);background:var(--bg);color:var(--teal-d)" aria-hidden="true"><svg viewBox="0 0 24 24"><path class="inf0" d="M12 12c-2-2.7-4-4-6-4a4 4 0 0 0 0 8c2 0 4-1.3 6-4zm0 0c2 2.7 4 4 6 4a4 4 0 0 0 0-8c-2 0-4 1.3-6 4z"/><path class="inf" pathLength="1" d="M12 12c-2-2.7-4-4-6-4a4 4 0 0 0 0 8c2 0 4-1.3 6-4zm0 0c2 2.7 4 4 6 4a4 4 0 0 0 0-8c-2 0-4 1.3-6 4z"/></svg></span><h3>Setup một lần</h3><p>Thanh toán một lần, không phí theo bài, không thuê bao hằng tháng.</p></article>
+        <article class="card value reveal"><span class="ic" style="--bg:var(--green-l);background:var(--bg);color:var(--green-d)" aria-hidden="true"><svg viewBox="0 0 24 24"><g class="sw1"><path d="M17 2l4 4-4 4"/><path d="M3 11V9a3 3 0 0 1 3-3h15"/></g><g class="sw2"><path d="M7 22l-4-4 4-4"/><path d="M21 13v2a3 3 0 0 1-3 3H3"/></g></svg></span><h3>Claude hoặc ChatGPT</h3><p>Chạy trên công cụ đội anh chị đang dùng, đổi công cụ vẫn giữ dữ liệu.</p></article>
       </div>
     </div>
   </section>
@@ -488,10 +600,10 @@ footer .author-link:hover{color:var(--green-d)}
         <span class="eyebrow">Hành trình triển khai</span>
         <h2>Ba bước để hệ thống chạy đều mỗi tháng</h2>
       </div>
-      <div class="g3">
-        <div class="card step reveal"><span class="n" style="background:var(--violet)">1</span><h3>Setup một lần</h3><p>Dựng file vận hành, bộ AI, kết nối lịch đăng trên công cụ của doanh nghiệp.</p><span class="when" style="background:var(--violet-l);color:var(--violet-d)">Tuần đầu tiên</span></div>
-        <div class="card step reveal"><span class="n" style="background:var(--amber)">2</span><h3>Cá nhân hoá thương hiệu</h3><p>Nạp dữ liệu, huấn luyện AI viết và thiết kế đúng phong cách riêng.</p><span class="when" style="background:var(--amber-l);color:var(--amber-d)">Gói 2, Gói 3</span></div>
-        <div class="card step reveal"><span class="n" style="background:var(--green)">3</span><h3>Vận hành mỗi tháng</h3><p>Đội anh chị duyệt, AI làm phần còn lại, kết quả tốt lên sau mỗi vòng.</p><span class="when" style="background:var(--green-l);color:var(--green-d)">Không giới hạn</span></div>
+      <div class="g3 steps mo">
+        <div class="card step reveal" style="--i:0"><span class="n" style="background:var(--violet)">1</span><h3>Setup một lần</h3><p>Dựng file vận hành, bộ AI, kết nối lịch đăng trên công cụ của doanh nghiệp.</p><span class="when" style="background:var(--violet-l);color:var(--violet-d)">Tuần đầu tiên</span></div>
+        <div class="card step reveal" style="--i:1"><span class="n" style="background:var(--amber)">2</span><h3>Cá nhân hoá thương hiệu</h3><p>Nạp dữ liệu, huấn luyện AI viết và thiết kế đúng phong cách riêng.</p><span class="when" style="background:var(--amber-l);color:var(--amber-d)">Gói 2, Gói 3</span></div>
+        <div class="card step reveal" style="--i:2"><span class="n" style="background:var(--green)">3</span><h3>Vận hành mỗi tháng</h3><p>Đội anh chị duyệt, AI làm phần còn lại, kết quả tốt lên sau mỗi vòng.</p><span class="when" style="background:var(--green-l);color:var(--green-d)">Không giới hạn</span></div>
       </div>
     </div>
   </section>
@@ -648,7 +760,7 @@ footer .author-link:hover{color:var(--green-d)}
         <h2>Ba mức đồng hành, thanh toán một lần</h2>
         <p>Gói nào cũng nhận trọn hệ thống và dùng không giới hạn.</p>
       </div>
-      <div class="g3 plans">
+      <div class="g3 plans mo">
         <article class="plan p1 reveal">
           <div class="name"><small>Gói 1</small><h3>Tự triển khai</h3><p>Đội đã quen dùng AI, muốn vận hành ngay</p></div>
           <div class="price"><span class="old"><s>999.000 đ</s><span class="off">−30%</span></span><span class="now">699.000<small>đ</small></span></div>
@@ -808,6 +920,20 @@ footer .author-link:hover{color:var(--green-d)}
   if("IntersectionObserver" in window && !matchMedia("(prefers-reduced-motion: reduce)").matches){
     var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.remove("pre");io.unobserve(e.target)}})},{rootMargin:"0px 0px -6% 0px"});
     document.querySelectorAll(".reveal").forEach(function(el){if(el.getBoundingClientRect().top>innerHeight){el.classList.add("pre");io.observe(el)}});
+  }
+
+  // Motion: khối .mo chỉ chạy khi hiện trên màn hình; số ở hero đếm lên một lần
+  var mos=document.querySelectorAll(".mo");
+  if("IntersectionObserver" in window){
+    var mio=new IntersectionObserver(function(es){es.forEach(function(e){e.target.classList.toggle("play",e.isIntersecting)})},{threshold:.15});
+    mos.forEach(function(el){mio.observe(el)});
+  }else{mos.forEach(function(el){el.classList.add("play")})}
+  if(!matchMedia("(prefers-reduced-motion: reduce)").matches){
+    document.querySelectorAll("[data-to]").forEach(function(el){
+      var to=+el.dataset.to,suf=el.dataset.suf||"",t0=null;
+      function step(t){if(!t0)t0=t;var k=Math.min(1,(t-t0)/1400),v=Math.round(to*(1-Math.pow(1-k,3)));el.textContent=v+suf;if(k<1)requestAnimationFrame(step)}
+      el.textContent="0"+suf;requestAnimationFrame(step);
+    });
   }
 
   function plan(){var r=form.querySelector('input[name="plan"]:checked');return r?r.value:"1"}
