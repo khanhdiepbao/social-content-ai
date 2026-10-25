@@ -1,0 +1,2 @@
+stream=1 (lan 1)
+/home/runner/work/_temp/dfd2ea3a-d1c0-4b0f-a69c-51cd0c62779f.sh: line 5: syntax error near unexpected token `done'
