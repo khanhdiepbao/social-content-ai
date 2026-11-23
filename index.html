@@ -274,6 +274,10 @@ header .btn{height:42px;padding:0 18px;font-size:14.5px;white-space:nowrap}
 .stats span{font-size:14px;color:var(--ink-2)}
 @media(max-width:760px){.proof .gal{grid-template-columns:repeat(3,minmax(0,1fr))}.stats{grid-template-columns:repeat(2,minmax(0,1fr))}}
 
+.mwrap{position:relative;overflow:hidden;transition:max-height .8s cubic-bezier(.4,0,.2,1)}
+.mfade{position:absolute;left:0;right:0;bottom:0;height:260px;display:flex;align-items:flex-end;justify-content:center;padding-bottom:28px;background:linear-gradient(180deg,rgba(255,255,255,0) 0%,rgba(255,255,255,.75) 55%,#fff 100%);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);mask-image:linear-gradient(180deg,transparent 0,#000 45%);-webkit-mask-image:linear-gradient(180deg,transparent 0,#000 45%);transition:opacity .4s}
+.mfade .btn{position:relative;z-index:2}
+.mwrap.open .mfade{opacity:0;pointer-events:none}
 .mason{columns:4 220px;column-gap:12px}
 .mason .m{position:relative;margin:0 0 12px;break-inside:avoid;border-radius:14px;overflow:hidden;background:var(--ice);transition:transform .35s cubic-bezier(.2,.7,.2,1),box-shadow .35s}
 .mason .m:hover{transform:translateY(-4px) scale(1.015);box-shadow:0 24px 50px -28px rgba(20,32,31,.55)}
@@ -594,37 +598,38 @@ footer .legal{flex-basis:100%;font-size:12.5px;padding-top:14px;border-top:1px s
   <section class="sec proof" id="thanh-pham">
     <div class="wrap">
       <div class="head reveal">
-        <span class="eyebrow">Thành phẩm thật</span>
-        <h2>Bốn tháng vận hành fanpage bằng Katla AI Social</h2>
-        <p>Thành phẩm thật từ 01/08/2026 của hai fanpage doanh nghiệp: ảnh, album, story và video Reels làm trên cùng hệ thống, mỗi bài một lần, không trùng lặp.</p>
+        <span class="eyebrow">Thành phẩm đã duyệt và đăng</span>
+        <h2>Thực tế vận hành bằng Katla AI Social</h2>
+        <p>26 ảnh và video chọn lọc từ các bài đã duyệt trên hai fanpage doanh nghiệp, từ 01/08/2026 tới nay.</p>
       </div>
-      <div class="mason reveal">
+      <div class="mwrap reveal" id="mwrap"><div class="mason" id="mason">
         <figure class="m reel-t"><video src="img/demo/reel-QCSV-1811.mp4" poster="img/demo/reel-QCSV-1811.jpg" muted loop playsinline preload="none" data-autoplay></video><span class="tag">Reels 9:16</span></figure>
-        <figure class="m"><img src="img/demo/post-QCSV-0310.jpg" alt="Bài đăng thành phẩm QCSV-0310" loading="lazy"></figure>
-        <figure class="m"><img src="img/demo/post-WM-1610.jpg" alt="Bài đăng thành phẩm WM-1610" loading="lazy"></figure>
-        <figure class="m"><img src="img/demo/post-QCSV-0810.jpg" alt="Bài đăng thành phẩm QCSV-0810" loading="lazy"></figure>
-        <figure class="m"><img src="img/demo/post-WM-1709.jpg" alt="Bài đăng thành phẩm WM-1709" loading="lazy"></figure>
+        <figure class="m"><img src="img/demo/post-WM-1711.jpg" alt="Thành phẩm WM-1711"></figure>
+        <figure class="m"><img src="img/demo/post-QCSV-0310.jpg" alt="Thành phẩm QCSV-0310"></figure>
+        <figure class="m"><img src="img/demo/post-WM-1610.jpg" alt="Thành phẩm WM-1610"></figure>
+        <figure class="m"><img src="img/demo/post-QCSV-1611.jpg" alt="Thành phẩm QCSV-1611"></figure>
         <figure class="m reel-t"><video src="img/demo/reel-WM-1911.mp4" poster="img/demo/reel-WM-1911.jpg" muted loop playsinline preload="none" data-autoplay></video><span class="tag">Reels 9:16</span></figure>
-        <figure class="m"><img src="img/demo/post-WM-1109.jpg" alt="Bài đăng thành phẩm WM-1109" loading="lazy"></figure>
-        <figure class="m"><img src="img/demo/post-QCSV-1710.jpg" alt="Bài đăng thành phẩm QCSV-1710" loading="lazy"></figure>
-        <figure class="m"><img src="img/demo/post-WM-2010b-story.jpg" alt="Bài đăng thành phẩm WM-2010b-story" loading="lazy"></figure>
-        <figure class="m"><img src="img/demo/post-QCSV-0610.jpg" alt="Bài đăng thành phẩm QCSV-0610" loading="lazy"></figure>
-        <figure class="m"><img src="img/demo/post-WM-2109.jpg" alt="Bài đăng thành phẩm WM-2109" loading="lazy"></figure>
-        <figure class="m"><img src="img/demo/post-WM-1609.jpg" alt="Bài đăng thành phẩm WM-1609" loading="lazy"></figure>
-        <figure class="m"><img src="img/demo/post-QCSV-3009.jpg" alt="Bài đăng thành phẩm QCSV-3009" loading="lazy"></figure>
-        <figure class="m"><img src="img/demo/post-WM-0710.jpg" alt="Bài đăng thành phẩm WM-0710" loading="lazy"></figure>
-        <figure class="m"><img src="img/demo/post-WM-2311.jpg" alt="Bài đăng thành phẩm WM-2311" loading="lazy"></figure>
-        <figure class="m"><img src="img/demo/post-QCSV-2011.jpg" alt="Bài đăng thành phẩm QCSV-2011" loading="lazy"></figure>
-        <figure class="m"><img src="img/demo/post-WM-0910.jpg" alt="Bài đăng thành phẩm WM-0910" loading="lazy"></figure>
-        <figure class="m"><img src="img/demo/post-WM-0810.jpg" alt="Bài đăng thành phẩm WM-0810" loading="lazy"></figure>
-        <figure class="m"><img src="img/demo/post-WM-1310.jpg" alt="Bài đăng thành phẩm WM-1310" loading="lazy"></figure>
-      </div>
-      <div class="stats reveal">
-        <div><b data-to="24">24</b><span>bài thành phẩm trên trang này</span></div>
-        <div><b data-to="6">6</b><span>video Reels 9:16 do AI dựng</span></div>
-        <div><b data-to="4">4</b><span>tháng vận hành liên tục</span></div>
-        <div><b data-to="2">2</b><span>bước duyệt cho mỗi bài</span></div>
-      </div>
+        <figure class="m"><img src="img/demo/post-WM-1709.jpg" alt="Thành phẩm WM-1709"></figure>
+        <figure class="m"><img src="img/demo/post-QCSV-1009.jpg" alt="Thành phẩm QCSV-1009"></figure>
+        <figure class="m"><img src="img/demo/post-WM-2311.jpg" alt="Thành phẩm WM-2311"></figure>
+        <figure class="m"><img src="img/demo/post-QCSV-1710.jpg" alt="Thành phẩm QCSV-1710"></figure>
+        <figure class="m"><img src="img/demo/post-WM-2109.jpg" alt="Thành phẩm WM-2109"></figure>
+        <figure class="m"><img src="img/demo/post-WM-1611.jpg" alt="Thành phẩm WM-1611"></figure>
+        <figure class="m"><img src="img/demo/post-QCSV-0608.jpg" alt="Thành phẩm QCSV-0608"></figure>
+        <figure class="m"><img src="img/demo/post-WM-2010b-story.jpg" alt="Thành phẩm WM-2010b-story"></figure>
+        <figure class="m"><img src="img/demo/post-QCSV-0810.jpg" alt="Thành phẩm QCSV-0810"></figure>
+        <figure class="m"><img src="img/demo/post-WM-1609.jpg" alt="Thành phẩm WM-1609"></figure>
+        <figure class="m"><img src="img/demo/post-QCSV-2011.jpg" alt="Thành phẩm QCSV-2011"></figure>
+        <figure class="m"><img src="img/demo/post-WM-0710.jpg" alt="Thành phẩm WM-0710"></figure>
+        <figure class="m"><img src="img/demo/post-QCSV-0310b.jpg" alt="Thành phẩm QCSV-0310b"></figure>
+        <figure class="m"><img src="img/demo/post-QCSV-0610.jpg" alt="Thành phẩm QCSV-0610"></figure>
+        <figure class="m"><img src="img/demo/post-WM-1109.jpg" alt="Thành phẩm WM-1109"></figure>
+        <figure class="m"><img src="img/demo/post-WM-2011.jpg" alt="Thành phẩm WM-2011"></figure>
+        <figure class="m"><img src="img/demo/post-WM-0910.jpg" alt="Thành phẩm WM-0910"></figure>
+        <figure class="m"><img src="img/demo/post-WM-0810.jpg" alt="Thành phẩm WM-0810"></figure>
+        <figure class="m"><img src="img/demo/post-WM-1310.jpg" alt="Thành phẩm WM-1310"></figure>
+        <figure class="m"><img src="img/demo/post-WM-2109b.jpg" alt="Thành phẩm WM-2109b"></figure>
+      </div><div class="mfade" id="mfade"><button class="btn btn-primary" type="button" id="mmore">Xem thêm 16 thành phẩm</button></div></div>
     </div>
   </section>
 
@@ -877,6 +882,14 @@ footer .legal{flex-basis:100%;font-size:12.5px;padding-top:14px;border-top:1px s
       var w=document.createTreeWalker(el,NodeFilter.SHOW_TEXT),last=null,n;while(n=w.nextNode()){if(n.nodeValue.trim())last=n}
       if(last&&last.parentNode.closest&&!last.parentNode.closest("script,style")){var t=last.nodeValue,m=t.match(/^([\s\S]*\S)\s+(\S+\s*)$/);if(m&&m[2].trim().length<14)last.nodeValue=m[1]+"\u00A0"+m[2]}
     });
+  })();
+
+  // Thành phẩm: hiện khoảng 10 mục đầu, phần còn lại làm mờ và mở bằng nút Xem thêm
+  (function(){
+    var w=$("mwrap"),m=$("mason"),btn=$("mmore");if(!w)return;
+    function cut(){if(w.classList.contains("open"))return;var f=[].slice.call(m.children).map(function(e){return e.offsetTop+e.offsetHeight}).sort(function(a,b){return a-b});var h=f[Math.min(9,f.length-1)]||600;w.style.maxHeight=(h+40)+"px"}
+    cut();addEventListener("resize",cut);addEventListener("load",cut);m.querySelectorAll("img").forEach(function(i){i.addEventListener("load",cut)});
+    btn.addEventListener("click",function(){w.style.maxHeight=m.scrollHeight+"px";w.classList.add("open");setTimeout(function(){w.style.maxHeight="none"},850)});
   })();
 
   // Hiệu ứng cuộn: video phóng to khi vào giữa màn hình, thu nhỏ khi cuộn qua
