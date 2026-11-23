@@ -186,7 +186,8 @@ header .btn{height:42px;padding:0 18px;font-size:14.5px;white-space:nowrap}
 .v-steps i{font-style:normal;font-family:var(--code);font-size:12px;color:var(--magma-l);padding-top:3px}
 .v-steps b{display:block;color:#fff;font-weight:600}
 .v-steps span{font-size:14.5px;color:var(--mute-d)}
-.reels{position:relative;height:600px}
+.reels{position:relative;height:640px;margin:0}
+.reels figcaption{position:absolute;left:0;right:0;bottom:0;text-align:center;font-size:13px;color:var(--mute-d)}
 .reel{position:absolute;width:250px;aspect-ratio:9/16;border-radius:24px;overflow:hidden;border:1px solid var(--line-d);box-shadow:0 40px 80px -30px rgba(0,0,0,.85);background:#000}
 .reel video,.reel img{width:100%;height:100%;object-fit:cover}
 .reel.r1{left:50%;top:20px;transform:translateX(-50%);z-index:3;width:290px}
@@ -205,7 +206,7 @@ header .btn{height:42px;padding:0 18px;font-size:14.5px;white-space:nowrap}
 .specs{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
 .specs span{font-family:var(--mono);font-size:12px;padding:7px 12px;border-radius:999px;border:1px solid var(--line-d);color:var(--ice)}
 @media(max-width:980px){.v-grid{grid-template-columns:1fr}.kinds{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media(max-width:560px){.reel{width:190px}.reel.r1{width:230px}.reels{height:470px}}
+@media(max-width:560px){.reel{width:190px}.reel.r1{width:230px}.reels{height:500px}}
 
 /* Proof gallery */
 .proof .gal{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px}
@@ -355,7 +356,7 @@ footer .legal{flex-basis:100%;font-size:12.5px;padding-top:14px;border-top:1px s
 
 <header class="top" id="top">
   <div class="wrap">
-    <a class="brand" href="#" aria-label="Katla AI Social"><img src="img/brand/katla-ai-social-trang.svg" alt="Katla AI Social" width="246" height="26"></a>
+    <a class="brand" href="#" aria-label="Katla AI"><img src="img/brand/katla-ai-trang.svg" alt="Katla AI" width="140" height="26"></a>
     <nav class="menu" aria-label="Mục lục">
       <a href="#tu-dong">Tự tạo, tự đăng</a>
       <a href="#video">Video ngắn</a>
@@ -389,7 +390,6 @@ footer .legal{flex-basis:100%;font-size:12.5px;padding-top:14px;border-top:1px s
         </div>
       </div>
       <div class="stage" id="stage" aria-hidden="true">
-        <div class="orbit"></div>
         <div class="phone" id="phone">
           <div class="scr">
             <span class="notch"></span>
@@ -397,9 +397,6 @@ footer .legal{flex-basis:100%;font-size:12.5px;padding-top:14px;border-top:1px s
             <span class="rec"><i></i>AI DỰNG · 9:16 · 27 GIÂY</span>
           </div>
         </div>
-        <div class="chip c1"><span class="dot">01</span><div>Kịch bản 5 cảnh đã viết<small>từ bài đã duyệt</small></div></div>
-        <div class="chip c2"><span class="dot">▶</span><div>Reels đã lên lịch 19:30<small>Facebook · Instagram · TikTok</small></div></div>
-        <div class="chip c3"><span class="dot">✓</span><div>22 bài tháng 10 đã đăng<small>tự động theo lịch duyệt</small></div></div>
       </div>
     </div>
   </section>
@@ -479,12 +476,11 @@ footer .legal{flex-basis:100%;font-size:12.5px;padding-top:14px;border-top:1px s
           </div>
           <div class="specs"><span>1080 × 1920</span><span>15 – 60 giây</span><span>Phụ đề tự động</span><span>Kiểm chất lượng ≥ 8/10</span></div>
         </div>
-        <div class="reels reveal" aria-hidden="true">
+        <figure class="reels reveal"><div aria-hidden="true">
           <div class="reel r2"><img src="img/case-study/tp-4.jpg" alt="" loading="lazy"></div>
           <div class="reel r3"><img src="img/case-study/tp-7.jpg" alt="" loading="lazy"></div>
-          <div class="reel r1"><video src="img/case-study/reel-thanh-pham.mp4" poster="img/case-study/reel-thanh-pham.jpg" muted loop playsinline preload="none" data-autoplay></video><div class="cap"><b>THÀNH PHẨM THẬT · 10/2026</b>Video 27 giây dựng hoàn toàn bằng AI cho fanpage doanh nghiệp</div></div>
-          <div class="wave"><i></i><i style="animation-delay:-.2s"></i><i style="animation-delay:-.4s"></i><i style="animation-delay:-.6s"></i><i style="animation-delay:-.8s"></i><i style="animation-delay:-.3s"></i><i style="animation-delay:-.7s"></i></div>
-        </div>
+          <div class="reel r1"><video src="img/case-study/reel-thanh-pham.mp4" poster="img/case-study/reel-thanh-pham.jpg" muted loop playsinline preload="none" data-autoplay></video></div>
+        </div><figcaption>Thành phẩm thật tháng 10/2026 · video 27 giây dựng bằng AI</figcaption></figure>
       </div>
       <div class="kinds">
         <div class="kind reveal"><b>Giới thiệu thương hiệu</b><span>Video page social, nhịp nhanh, logo nổi bật</span></div>
@@ -666,7 +662,7 @@ footer .legal{flex-basis:100%;font-size:12.5px;padding-top:14px;border-top:1px s
 
 <footer>
   <div class="wrap">
-    <img src="img/brand/katla-ai-social-trang.svg" alt="Katla AI Social" width="208" height="22">
+    <img src="img/brand/katla-ai-trang.svg" alt="Katla AI" width="118" height="22">
     <span>Một ứng dụng của Katla AI · AI agent cho Sales &amp; Marketing</span>
     <span>Xây dựng bởi <a href="https://diepbaokhanh.com" target="_blank" rel="noopener">Diệp Bảo Khánh</a> · <a href="https://zalo.me/0946922101" target="_blank" rel="noopener">0946 922 101</a> · <a href="https://www.facebook.com/diepbaokhanh" target="_blank" rel="noopener">Facebook</a></span>
     <span class="legal">Bản quyền thuộc DiepBaoKhanh</span>
