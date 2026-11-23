@@ -12,7 +12,7 @@
 <meta property="og:url" content="https://katla.diepbaokhanh.com/">
 <meta property="og:title" content="Katla AI Social — Content social tự chạy, video ngắn tự dựng">
 <meta property="og:description" content="Ứng dụng của Katla AI, AI agent cho Sales & Marketing: tự tạo, tự đăng content và dựng video ngắn 9:16.">
-<meta name="theme-color" content="#0B1312">
+<meta name="theme-color" content="#102624">
 <link rel="icon" href="img/brand/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="img/brand/favicon-32.png" sizes="32x32" type="image/png">
 <link rel="apple-touch-icon" href="img/brand/favicon-180.png">
@@ -21,11 +21,11 @@
 <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
 <style>
 :root{
-  --night:#0B1312;--basalt:#14201F;--basalt-2:#1B2A29;--line-d:rgba(238,244,245,.12);
+  --night:#102624;--basalt:#16302E;--basalt-2:#1E3D3B;--line-d:rgba(238,244,245,.12);
   --ice:#EEF4F5;--ice-2:#F7FAFA;--white:#fff;
   --ink:#14201F;--ink-2:#4A5A59;--line:#D8E2E3;
   --glacier:#2E6E80;--glacier-l:#7FC4D4;--magma:#D2430F;--magma-l:#FF6B2C;
-  --mute-d:#A9B9BA;
+  --mute-d:#B8CACB;
   --r-sm:6px;--r-md:12px;--r-lg:20px;
   --display:"Be Vietnam Pro",system-ui,sans-serif;--sans:"Be Vietnam Pro",system-ui,sans-serif;--mono:"Be Vietnam Pro",system-ui,sans-serif;--code:"JetBrains Mono",ui-monospace,monospace;
 }
@@ -36,12 +36,14 @@ body{margin:0;font-family:var(--sans);font-size:16px;line-height:1.6;color:var(-
 img,video{max-width:100%;display:block}
 a{color:inherit}
 .wrap{width:min(1180px,100% - 40px);margin-inline:auto}
+h1,h2,h3,h4{text-wrap:balance}
+p,li,span,b,summary,.ans,figcaption{text-wrap:pretty}
 h1,h2,h3{margin:0;font-family:var(--display);font-weight:700;letter-spacing:-.025em;line-height:1.15}
 h2{font-size:clamp(28px,4vw,46px)}
 p{margin:0}
 .eyebrow{display:inline-flex;align-items:center;gap:10px;font-family:var(--mono);font-weight:600;font-size:12.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--glacier)}
 .eyebrow::before{content:"";width:18px;height:2px;background:currentColor}
-.dark{background:var(--night);color:var(--ice)}
+.dark{background:radial-gradient(120% 80% at 0% 0%,rgba(46,110,128,.55) 0%,transparent 55%),radial-gradient(90% 70% at 100% 100%,rgba(210,67,15,.28) 0%,transparent 60%),linear-gradient(160deg,#143533 0%,#0F2523 100%);color:var(--ice)}
 .dark .eyebrow{color:var(--glacier-l)}
 .sec{padding-block:clamp(72px,10vw,128px);position:relative}
 .head{display:grid;gap:16px;max-width:760px;margin-bottom:clamp(36px,5vw,56px)}
@@ -58,7 +60,7 @@ p{margin:0}
 
 /* Header */
 header.top{position:fixed;inset:0 0 auto;z-index:40;transition:background .3s,border-color .3s;border-bottom:1px solid transparent}
-header.top.solid{background:rgba(11,19,18,.82);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-color:var(--line-d)}
+header.top.solid{background:rgba(16,38,36,.85);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-color:var(--line-d)}
 header.top .wrap{display:flex;align-items:center;justify-content:space-between;height:72px;gap:20px}
 .brand img{height:26px;width:auto}
 nav.menu{display:flex;gap:28px;font-size:14.5px}
@@ -73,7 +75,7 @@ header .btn{height:42px;padding:0 18px;font-size:14.5px;white-space:nowrap}
 .hero .grid-bg{position:absolute;inset:0;z-index:-2;background-image:linear-gradient(rgba(127,196,212,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(127,196,212,.07) 1px,transparent 1px);background-size:56px 56px;mask-image:radial-gradient(ellipse 80% 70% at 60% 40%,#000 30%,transparent 75%);-webkit-mask-image:radial-gradient(ellipse 80% 70% at 60% 40%,#000 30%,transparent 75%)}
 .glow{position:absolute;border-radius:50%;filter:blur(90px);z-index:-1;pointer-events:none}
 .glow.g1{width:560px;height:560px;background:radial-gradient(circle,rgba(255,107,44,.55),rgba(210,67,15,0) 70%);right:-80px;top:8%;animation:drift 14s ease-in-out infinite alternate}
-.glow.g2{width:520px;height:520px;background:radial-gradient(circle,rgba(46,110,128,.6),rgba(46,110,128,0) 70%);left:-160px;bottom:-120px;animation:drift 18s ease-in-out infinite alternate-reverse}
+.glow.g2{width:620px;height:620px;background:radial-gradient(circle,rgba(127,196,212,.45),rgba(46,110,128,0) 70%);left:-160px;bottom:-120px;animation:drift 18s ease-in-out infinite alternate-reverse}
 @keyframes drift{to{transform:translate(-60px,40px) scale(1.12)}}
 .hero-in{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:56px;align-items:center}
 .hero-copy{display:grid;gap:26px}
@@ -92,8 +94,8 @@ header .btn{height:42px;padding:0 18px;font-size:14.5px;white-space:nowrap}
 
 /* Phone stage */
 .stage{position:relative;height:620px;display:grid;place-items:center;perspective:1200px}
-.phone{position:relative;width:290px;aspect-ratio:9/19.2;border-radius:42px;padding:11px;background:linear-gradient(160deg,#2A3B3A,#0E1716);box-shadow:0 40px 90px -30px rgba(0,0,0,.8),0 0 0 1px rgba(238,244,245,.14) inset,0 0 80px -20px rgba(255,107,44,.35);transform:rotateY(-14deg) rotateX(6deg);transition:transform .25s ease-out;transform-style:preserve-3d}
-.phone .scr{position:relative;width:100%;height:100%;border-radius:32px;overflow:hidden;background:#000}
+.phone{position:relative;width:300px;border-radius:40px;padding:10px;background:linear-gradient(160deg,#2A3B3A,#0E1716);box-shadow:0 40px 90px -30px rgba(0,0,0,.8),0 0 0 1px rgba(238,244,245,.14) inset,0 0 80px -20px rgba(255,107,44,.35);transform:rotateY(-14deg) rotateX(6deg);transition:transform .25s ease-out;transform-style:preserve-3d}
+.phone .scr{position:relative;width:100%;aspect-ratio:9/16;border-radius:31px;overflow:hidden;background:#000}
 .phone video,.phone .scr>img{width:100%;height:100%;object-fit:cover}
 .phone .notch{position:absolute;top:18px;left:50%;transform:translateX(-50%);width:84px;height:22px;border-radius:12px;background:#000;z-index:3}
 .phone .rec{position:absolute;left:14px;bottom:16px;right:14px;z-index:3;display:flex;align-items:center;gap:8px;font-family:var(--mono);font-size:10.5px;color:#fff;letter-spacing:.06em}
@@ -129,8 +131,7 @@ header .btn{height:42px;padding:0 18px;font-size:14.5px;white-space:nowrap}
 .core img{width:44px;height:auto}
 .core b{font-family:var(--display);font-size:20px;font-weight:600;display:block}
 .core span{font-size:14px;color:var(--mute-d)}
-.apps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;position:relative;padding-top:26px}
-.apps::before{content:"";position:absolute;top:0;left:16.6%;right:16.6%;height:26px;border:1px solid var(--line);border-bottom:0;border-radius:12px 12px 0 0}
+.apps{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;position:relative}
 .app{position:relative;padding:18px;border-radius:var(--r-md);background:#fff;border:1px solid var(--line);display:grid;gap:6px}
 .app b{font-weight:700;font-size:15.5px}
 .app span{font-size:13.5px;color:var(--ink-2);line-height:1.45}
@@ -140,38 +141,70 @@ header .btn{height:42px;padding:0 18px;font-size:14.5px;white-space:nowrap}
 @media(max-width:900px){.eco-grid{grid-template-columns:1fr}.apps{grid-template-columns:1fr}.apps::before{display:none}}
 
 /* Feature 1: auto content */
-.f1-grid{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:56px;align-items:start}
-.pipe{display:grid;gap:10px;counter-reset:s}
-.step{position:relative;display:grid;grid-template-columns:44px 1fr auto;gap:16px;align-items:center;padding:16px 18px;border-radius:var(--r-md);border:1px solid var(--line);background:#fff;transition:border-color .3s,box-shadow .3s,transform .3s}
-.step .n{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;font-family:var(--code);font-size:13px;background:var(--ice);color:var(--glacier)}
-.step b{display:block;font-size:16px}
-.step span{font-size:14px;color:var(--ink-2)}
-.step .tag{font-family:var(--mono);font-size:11px;letter-spacing:.06em;padding:5px 9px;border-radius:999px;background:var(--ice);color:var(--glacier);white-space:nowrap}
-.step .tag.you{background:rgba(210,67,15,.1);color:var(--magma)}
-.step.on{border-color:var(--glacier);box-shadow:0 14px 34px -20px rgba(46,110,128,.6);transform:translateX(6px)}
-.step.on .n{background:var(--glacier);color:#fff}
-.step.done .n{background:var(--basalt);color:#fff}
-/* agent console */
-.console{border-radius:var(--r-lg);background:var(--basalt);color:var(--ice);overflow:hidden;box-shadow:0 30px 70px -40px rgba(11,19,18,.8);position:sticky;top:100px}
-.console .bar{display:flex;align-items:center;gap:8px;padding:12px 16px;border-bottom:1px solid var(--line-d);font-family:var(--mono);font-size:12px;color:var(--mute-d)}
-.console .bar i{width:10px;height:10px;border-radius:50%;background:#2E3D3C}
-.console .bar i:first-child{background:var(--magma)}
-.console .bar b{margin-left:auto;font-weight:500;color:var(--glacier-l)}
-.log{min-height:250px;padding:18px 18px 8px;font-family:var(--sans);font-size:13px;line-height:1.75}
-.log p{opacity:0;transform:translateY(4px);transition:all .35s}
-.log p.in{opacity:1;transform:none}
-.log .t{color:var(--mute-d);font-family:var(--code);font-size:12px;margin-right:4px}.log .ok{color:#8FE0B5}.log .ac{color:#FFB08A}.log .gl{color:var(--glacier-l)}
-.cal{padding:4px 18px 20px}
-.cal-h{display:flex;justify-content:space-between;font-size:12px;color:var(--mute-d);font-family:var(--mono);margin-bottom:10px}
-.cal-g{display:grid;grid-template-columns:repeat(7,1fr);gap:6px}
-.cal-g div{aspect-ratio:1/.8;border-radius:8px;background:rgba(238,244,245,.05);border:1px solid rgba(238,244,245,.06);position:relative}
-.cal-g div.p{background:rgba(46,110,128,.35);border-color:rgba(127,196,212,.35)}
-.cal-g div.v{background:rgba(210,67,15,.35);border-color:rgba(255,107,44,.45)}
-.cal-g div.pop{animation:pop .5s ease-out}
-@keyframes pop{0%{transform:scale(.6)}70%{transform:scale(1.1)}to{transform:scale(1)}}
-.legend{display:flex;gap:18px;padding:0 18px 18px;font-size:12px;color:var(--mute-d)}
-.legend i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:6px;vertical-align:-1px}
-@media(max-width:980px){.f1-grid{grid-template-columns:1fr}.console{position:relative;top:0}}
+.f1{background:linear-gradient(180deg,#fff 0%,var(--ice-2) 100%);overflow:hidden}
+.f1-grid{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:64px;align-items:center}
+.tl{position:relative;display:grid;gap:4px;padding-left:34px}
+.tl::before{content:"";position:absolute;left:9px;top:14px;bottom:14px;width:2px;border-radius:2px;background:var(--line)}
+.tl .prog{position:absolute;left:9px;top:14px;width:2px;height:0;border-radius:2px;background:linear-gradient(var(--glacier-l),var(--magma-l));transition:height .7s cubic-bezier(.4,0,.2,1)}
+.tl-step{position:relative;padding:12px 14px;border-radius:12px;cursor:pointer;transition:background .35s}
+.tl-step::before{content:"";position:absolute;left:-30px;top:18px;width:12px;height:12px;border-radius:50%;background:#fff;border:2px solid #C5D3D5;transition:all .35s}
+.tl-step b{display:flex;align-items:center;gap:10px;font-size:16px;color:#7C8C8D;transition:color .35s}
+.tl-step b small{font-weight:600;font-size:11px;letter-spacing:.06em;text-transform:uppercase;padding:3px 8px;border-radius:999px;background:var(--ice);color:var(--glacier)}
+.tl-step b small.you{background:rgba(210,67,15,.1);color:var(--magma)}
+.tl-step span{display:block;font-size:14px;color:#9AA8A9;max-height:0;overflow:hidden;opacity:0;transition:all .45s}
+.tl-step.done::before{background:var(--glacier);border-color:var(--glacier)}
+.tl-step.done b{color:var(--ink)}
+.tl-step.on{background:#fff;box-shadow:0 16px 40px -24px rgba(20,32,31,.45)}
+.tl-step.on::before{background:var(--magma-l);border-color:var(--magma-l);box-shadow:0 0 0 6px rgba(255,107,44,.18)}
+.tl-step.on b{color:var(--ink)}
+.tl-step.on span{max-height:44px;opacity:1;margin-top:4px;color:var(--ink-2)}
+/* studio window */
+.studio{position:relative;border-radius:24px;padding:1px;background:linear-gradient(140deg,rgba(255,107,44,.65),rgba(127,196,212,.35) 45%,rgba(238,244,245,.08));box-shadow:0 50px 100px -50px rgba(11,19,18,.75)}
+.studio::after{content:"";position:absolute;inset:-60px -40px auto auto;width:260px;height:260px;border-radius:50%;background:radial-gradient(circle,rgba(255,107,44,.35),transparent 70%);filter:blur(30px);z-index:-1}
+.st-in{border-radius:23px;background:linear-gradient(160deg,#1F4442 0%,#132B29 65%);color:var(--ice);padding:22px;display:grid;gap:18px}
+.st-top{display:flex;align-items:center;justify-content:space-between;gap:12px;font-size:13px;color:var(--mute-d)}
+.st-top img{height:16px;width:auto;opacity:.9}
+.pill{display:inline-flex;align-items:center;gap:8px;padding:6px 12px;border-radius:999px;font-size:12.5px;font-weight:600;background:rgba(127,196,212,.14);color:var(--glacier-l);transition:background .4s,color .4s}
+.pill i{width:7px;height:7px;border-radius:50%;background:currentColor;animation:blink 1.4s infinite}
+.pill.wait{background:rgba(255,176,138,.16);color:#FFB08A}
+.pill.ok{background:rgba(143,224,181,.15);color:#8FE0B5}
+.post{display:grid;grid-template-columns:150px 1fr;gap:18px;padding:16px;border-radius:16px;background:rgba(238,244,245,.05);border:1px solid rgba(238,244,245,.08)}
+.thumb{position:relative;aspect-ratio:4/5;border-radius:12px;overflow:hidden;background:repeating-linear-gradient(135deg,rgba(238,244,245,.05) 0 10px,rgba(238,244,245,.02) 10px 20px)}
+.thumb img{width:100%;height:100%;object-fit:cover;opacity:0;filter:blur(14px) saturate(.6);transform:scale(1.08);transition:all 1s cubic-bezier(.2,.7,.2,1)}
+.thumb.show img{opacity:1;filter:none;transform:none}
+.thumb .scan{position:absolute;left:0;right:0;height:40%;top:-40%;background:linear-gradient(180deg,transparent,rgba(255,107,44,.35),transparent);opacity:0}
+.thumb.build .scan{opacity:1;animation:scan 1.2s linear infinite}
+@keyframes scan{to{top:100%}}
+.thumb .badge{position:absolute;right:8px;bottom:8px;padding:3px 8px;border-radius:6px;background:rgba(11,19,18,.75);font-size:11px;font-weight:600;color:#fff;opacity:0;transition:opacity .5s}
+.thumb.show .badge{opacity:1}
+.stamp{position:absolute;inset:0;display:grid;place-items:center;opacity:0;transform:scale(1.4);transition:all .45s cubic-bezier(.2,1.4,.4,1)}
+.stamp span{padding:8px 14px;border-radius:10px;border:2px solid #8FE0B5;color:#8FE0B5;font-weight:700;font-size:14px;background:rgba(11,19,18,.6);transform:rotate(-8deg)}
+.thumb.approved .stamp{opacity:1;transform:none}
+.copy{display:grid;gap:10px;align-content:start;min-width:0}
+.copy .meta2{font-size:12px;color:var(--mute-d)}
+.copy h4{margin:0;font-size:17px;line-height:1.35;color:#fff;min-height:46px}
+.copy h4 .car{display:inline-block;width:2px;height:1em;background:var(--magma-l);vertical-align:-2px;margin-left:2px;animation:blink 1s infinite}
+.ln{height:8px;border-radius:4px;background:rgba(238,244,245,.08);overflow:hidden}
+.ln i{display:block;height:100%;width:0;border-radius:4px;background:linear-gradient(90deg,var(--glacier-l),rgba(127,196,212,.4));transition:width .9s ease}
+.plats{display:flex;flex-wrap:wrap;gap:8px}
+.plat{padding:7px 12px;border-radius:10px;font-size:12.5px;font-weight:600;color:#6F8586;background:rgba(238,244,245,.04);border:1px solid rgba(238,244,245,.08);transition:all .4s}
+.plat.live{color:#fff;border-color:rgba(255,107,44,.6);background:linear-gradient(135deg,rgba(255,107,44,.28),rgba(210,67,15,.12));box-shadow:0 8px 20px -12px rgba(255,107,44,.9)}
+.st-foot{display:grid;grid-template-columns:1fr auto;gap:16px;align-items:end}
+.week{display:grid;grid-template-columns:repeat(7,1fr);gap:8px}
+.day{display:grid;gap:6px;justify-items:center;font-size:11px;color:var(--mute-d)}
+.bar{width:100%;height:56px;border-radius:8px;background:rgba(238,244,245,.05);display:flex;flex-direction:column-reverse;gap:3px;padding:4px;overflow:hidden}
+.bar i{display:block;height:14px;border-radius:4px;transform:scaleY(0);transform-origin:bottom;transition:transform .5s cubic-bezier(.2,1.3,.4,1)}
+.bar i.p{background:linear-gradient(90deg,#3E8EA2,var(--glacier-l))}
+.bar i.v{background:linear-gradient(90deg,var(--magma),var(--magma-l))}
+.week.fill .bar i{transform:none}
+.spark{width:120px;height:56px}
+.spark path{fill:none;stroke:url(#sg);stroke-width:2.5;stroke-linecap:round;stroke-dasharray:220;stroke-dashoffset:220;transition:stroke-dashoffset 1.4s ease}
+.spark.draw path{stroke-dashoffset:0}
+.spark text{fill:var(--mute-d);font-size:10px;font-family:var(--sans)}
+.st-log{font-size:13px;color:var(--mute-d);min-height:20px;display:flex;align-items:center;gap:8px}
+.st-log b{color:var(--ice);font-weight:500;transition:opacity .3s}
+@media(max-width:980px){.f1-grid{grid-template-columns:1fr;gap:40px}}
+@media(max-width:520px){.post{grid-template-columns:110px 1fr;gap:12px;padding:12px}.copy h4{font-size:15px}.st-foot{grid-template-columns:1fr}.spark{display:none}}
 
 /* Feature 2: video */
 .video-sec{overflow:hidden;isolation:isolate}
@@ -186,13 +219,13 @@ header .btn{height:42px;padding:0 18px;font-size:14.5px;white-space:nowrap}
 .v-steps i{font-style:normal;font-family:var(--code);font-size:12px;color:var(--magma-l);padding-top:3px}
 .v-steps b{display:block;color:#fff;font-weight:600}
 .v-steps span{font-size:14.5px;color:var(--mute-d)}
-.reels{position:relative;height:640px;margin:0}
+.reels{position:relative;height:600px;margin:0}
 .reels figcaption{position:absolute;left:0;right:0;bottom:0;text-align:center;font-size:13px;color:var(--mute-d)}
-.reel{position:absolute;width:250px;aspect-ratio:9/16;border-radius:24px;overflow:hidden;border:1px solid var(--line-d);box-shadow:0 40px 80px -30px rgba(0,0,0,.85);background:#000}
+.reel{position:absolute;width:250px;height:444px;border-radius:24px;overflow:hidden;border:1px solid var(--line-d);box-shadow:0 40px 80px -30px rgba(0,0,0,.85);background:#000}
 .reel video,.reel img{width:100%;height:100%;object-fit:cover}
-.reel.r1{left:50%;top:20px;transform:translateX(-50%);z-index:3;width:290px}
-.reel.r2{left:0;top:90px;transform:rotate(-7deg);opacity:.7;z-index:1}
-.reel.r3{right:0;top:90px;transform:rotate(7deg);opacity:.7;z-index:1}
+.reel.r1{left:50%;top:10px;margin-left:-150px;z-index:3;width:300px;height:533px}
+.reel.r2{left:0;top:80px;transform:rotate(-7deg);opacity:.7;z-index:1}
+.reel.r3{right:0;top:80px;transform:rotate(7deg);opacity:.7;z-index:1}
 .reel .cap{position:absolute;left:12px;right:12px;bottom:12px;padding:10px 12px;border-radius:12px;background:rgba(11,19,18,.72);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);font-size:12px;color:var(--ice);line-height:1.4}
 .reel .cap b{display:block;font-family:var(--mono);font-weight:500;font-size:10.5px;letter-spacing:.08em;color:#FFB08A}
 .wave{position:absolute;left:50%;bottom:6px;transform:translateX(-50%);display:flex;align-items:flex-end;gap:4px;height:40px;z-index:4}
@@ -206,7 +239,7 @@ header .btn{height:42px;padding:0 18px;font-size:14.5px;white-space:nowrap}
 .specs{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
 .specs span{font-family:var(--mono);font-size:12px;padding:7px 12px;border-radius:999px;border:1px solid var(--line-d);color:var(--ice)}
 @media(max-width:980px){.v-grid{grid-template-columns:1fr}.kinds{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media(max-width:560px){.reel{width:190px}.reel.r1{width:230px}.reels{height:500px}}
+@media(max-width:560px){.reel{width:170px;height:302px}.reel.r1{width:240px;height:427px;margin-left:-120px}.reels{height:500px}}
 
 /* Proof gallery */
 .proof .gal{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px}
@@ -230,7 +263,7 @@ header .btn{height:42px;padding:0 18px;font-size:14.5px;white-space:nowrap}
 @media(max-width:860px){.ctrl-g{grid-template-columns:1fr}}
 
 /* Author */
-.author{display:grid;grid-template-columns:auto 1fr;gap:28px;align-items:center;padding:32px;border-radius:var(--r-lg);background:var(--basalt);color:var(--ice)}
+.author{display:grid;grid-template-columns:auto 1fr;gap:28px;align-items:center;padding:32px;border-radius:var(--r-lg);background:linear-gradient(120deg,#1E4644,#16302E 60%,#2A2420);color:var(--ice)}
 .author .av{width:88px;height:88px;border-radius:22px;background:linear-gradient(140deg,var(--glacier),var(--basalt-2));display:grid;place-items:center;font-family:var(--display);font-size:24px;color:#fff}
 .author b{font-size:19px;display:block}
 .author p{color:var(--mute-d);font-size:15.5px;margin-top:6px}
@@ -284,11 +317,16 @@ header .btn{height:42px;padding:0 18px;font-size:14.5px;white-space:nowrap}
 .steps{list-style:none;margin:0;padding:0;display:grid;gap:16px}
 .steps li{display:grid;grid-template-columns:34px 1fr;gap:12px;align-items:center}
 .steps b{width:34px;height:34px;border-radius:10px;display:grid;place-items:center;background:rgba(127,196,212,.16);color:var(--glacier-l);font-family:var(--mono);font-weight:500}
-.contact{display:grid;gap:4px;padding-top:22px;border-top:1px solid var(--line-d)}
-.contact small{color:var(--mute-d)}
-.contact .phone{font-family:var(--display);font-size:28px;font-weight:600;color:#fff}
-.cta-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
-.card.info .btn-line{background:transparent;color:var(--ice);border-color:var(--line-d);height:44px}
+.card.info{justify-content:space-between}
+.zalo{display:grid;grid-template-columns:132px 1fr;gap:20px;align-items:center;padding-top:24px;border-top:1px solid var(--line-d)}
+.zalo img{width:132px;height:132px;border-radius:14px;background:#fff;padding:6px}
+.zalo-tx{display:grid;gap:2px;min-width:0}
+.zalo-tx small{color:var(--mute-d);font-size:13px}
+.hotline{font-size:26px;font-weight:700;color:#fff;text-decoration:none;letter-spacing:-.01em}
+.zalo-tx>span{color:var(--mute-d);font-size:14px}
+@media(max-width:420px){.zalo{grid-template-columns:1fr}.zalo img{width:160px;height:160px}}
+.cta-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+.card.info .btn-line{background:transparent;color:var(--ice);border-color:var(--line-d);height:40px;padding:0 16px;font-size:14px}
 fieldset{border:0;margin:0 0 18px;padding:0}
 .lg{display:block;font-weight:600;font-size:14px;margin-bottom:10px}
 .pick{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
@@ -346,6 +384,8 @@ footer .legal{flex-basis:100%;font-size:12.5px;padding-top:14px;border-top:1px s
 .mbar.show{transform:none}
 @media(max-width:760px){.mbar{display:flex}}
 
+/* Scroll zoom */
+[data-zoom]{will-change:transform;transition:none}
 /* Reveal */
 .reveal{transition:opacity .7s ease,transform .7s ease}
 .reveal.pre{opacity:0;transform:translateY(28px)}
@@ -390,13 +430,12 @@ footer .legal{flex-basis:100%;font-size:12.5px;padding-top:14px;border-top:1px s
         </div>
       </div>
       <div class="stage" id="stage" aria-hidden="true">
-        <div class="phone" id="phone">
+        <div class="phone" id="phone"><div data-zoom="hero" class="zin">
           <div class="scr">
-            <span class="notch"></span>
-            <video src="img/case-study/reel-thanh-pham.mp4" poster="img/case-study/reel-thanh-pham.jpg" autoplay muted loop playsinline preload="metadata"></video>
+                        <video src="img/case-study/reel-thanh-pham.mp4" poster="img/case-study/reel-thanh-pham.jpg" autoplay muted loop playsinline preload="metadata"></video>
             <span class="rec"><i></i>AI DỰNG · 9:16 · 27 GIÂY</span>
           </div>
-        </div>
+        </div></div>
       </div>
     </div>
   </section>
@@ -415,45 +454,61 @@ footer .legal{flex-basis:100%;font-size:12.5px;padding-top:14px;border-top:1px s
         <span class="eyebrow">Katla AI là gì</span>
         <h2>Một AI agent cho Sales &amp; Marketing, nhiều ứng dụng</h2>
         <p><b>Katla AI</b> là AI agent làm việc như một bộ phận Sales &amp; Marketing: hiểu thương hiệu, lập kế hoạch, sản xuất và đo kết quả. Mỗi mảng việc là một ứng dụng riêng chạy trên cùng một bộ não.</p>
-        <p><b>Katla AI Social</b>, ứng dụng anh chị đang xem, chuyên tự động hoá content mạng xã hội: từ ý tưởng tới bài đăng và video ngắn.</p>
+        <p><b>Katla AI Social</b> là ứng dụng hoàn thiện đầu tiên: tự động hoá content mạng xã hội từ ý tưởng tới bài đăng và video ngắn. Các công cụ tiếp theo gồm tự xây dựng video ngắn, video quảng cáo, đề xuất và quản lý quảng cáo trực tuyến.</p>
       </div>
       <div class="eco-map reveal">
         <div class="core"><img src="img/brand/katla-bieu-tuong-trang.svg" alt="" width="44" height="39"><div><b>Katla AI</b><span>AI agent Sales &amp; Marketing</span></div></div>
         <div class="apps">
-          <div class="app on"><em>Đang xem</em><b>Katla AI Social</b><span>Tự tạo, tự đăng content và dựng video ngắn</span></div>
-          <div class="app"><em>Lộ trình</em><b>Sales</b><span>Hỗ trợ tư vấn, báo giá, chăm sóc khách</span></div>
-          <div class="app"><em>Lộ trình</em><b>Quảng cáo</b><span>Lên chiến dịch, theo dõi hiệu quả</span></div>
+          <div class="app on"><em>Đã hoàn thiện · Đang xem</em><b>Katla AI Social</b><span>Tự tạo, tự đăng content social, kèm video ngắn</span></div>
+          <div class="app"><em>Tiếp theo</em><b>Video ngắn</b><span>Công cụ tự xây dựng video ngắn đa nền tảng</span></div>
+          <div class="app"><em>Tiếp theo</em><b>Video quảng cáo</b><span>Tự dựng video quảng cáo theo sản phẩm, ưu đãi</span></div>
+          <div class="app"><em>Tiếp theo</em><b>Quảng cáo trực tuyến</b><span>Đề xuất và quản lý chiến dịch quảng cáo</span></div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- FEATURE 1 -->
-  <section class="sec" id="tu-dong">
+  <section class="sec f1" id="tu-dong">
     <div class="wrap">
       <div class="head reveal">
         <span class="eyebrow">Tính năng 1 · Tự tạo và tự đăng</span>
         <h2>Từ kế hoạch tháng tới bài đã đăng, agent tự chạy cả chuỗi</h2>
-        <p>Mỗi bài đi qua 7 bước. Agent làm phần sản xuất, anh chị giữ hai cổng duyệt. Bài đã duyệt tự lên lịch và tự đăng, không cần ai ngồi canh giờ.</p>
+        <p>Agent làm phần sản xuất, anh chị giữ hai bước duyệt. Bài đã duyệt tự lên lịch và tự đăng, không cần ai ngồi canh giờ.</p>
       </div>
       <div class="f1-grid">
-        <div class="pipe" id="pipe">
-          <div class="step"><span class="n">01</span><div><b>Lập kế hoạch tháng</b><span>Chủ đề, mục tiêu, lịch đăng từng kênh</span></div><span class="tag">Agent</span></div>
-          <div class="step"><span class="n">02</span><div><b>Duyệt kế hoạch</b><span>Cổng duyệt thứ nhất</span></div><span class="tag you">Anh chị</span></div>
-          <div class="step"><span class="n">03</span><div><b>Viết bài</b><span>3 phương án tiêu đề, nội dung đúng giọng thương hiệu</span></div><span class="tag">Agent</span></div>
-          <div class="step"><span class="n">04</span><div><b>Làm hình, dựng video</b><span>Ảnh bài đăng, video ngắn 9:16</span></div><span class="tag">Agent</span></div>
-          <div class="step"><span class="n">05</span><div><b>Duyệt bài và media</b><span>Cổng duyệt thứ hai</span></div><span class="tag you">Anh chị</span></div>
-          <div class="step"><span class="n">06</span><div><b>Tự lên lịch, tự đăng</b><span>Đúng giờ, đúng kênh, có xác minh đã đăng</span></div><span class="tag">Agent</span></div>
-          <div class="step"><span class="n">07</span><div><b>Đo 48 giờ, đề xuất kỳ sau</b><span>Bài nào hiệu quả và vì sao</span></div><span class="tag">Agent</span></div>
+        <div class="tl" id="tl">
+          <span class="prog" id="tlProg"></span>
+          <div class="tl-step"><b>Lập kế hoạch tháng <small>Agent</small></b><span>Chủ đề, mục tiêu, lịch đăng cho từng kênh</span></div>
+          <div class="tl-step"><b>Duyệt kế hoạch <small class="you">Anh chị</small></b><span>Bước duyệt thứ nhất, chỉnh hoặc chốt trong một lần</span></div>
+          <div class="tl-step"><b>Viết bài <small>Agent</small></b><span>3 phương án tiêu đề, nội dung đúng giọng thương hiệu</span></div>
+          <div class="tl-step"><b>Làm hình, dựng video <small>Agent</small></b><span>Ảnh bài đăng và video ngắn 9:16 theo nhận diện</span></div>
+          <div class="tl-step"><b>Duyệt bài và media <small class="you">Anh chị</small></b><span>Bước duyệt thứ hai, bài chưa duyệt không được đăng</span></div>
+          <div class="tl-step"><b>Tự lên lịch, tự đăng <small>Agent</small></b><span>Đúng giờ, đúng kênh, xác minh bài đã lên</span></div>
+          <div class="tl-step"><b>Đo 48 giờ, đề xuất kỳ sau <small>Agent</small></b><span>Bài nào hiệu quả và vì sao, đưa vào kế hoạch tháng sau</span></div>
         </div>
-        <div class="console reveal" aria-hidden="true">
-          <div class="bar"><i></i><i></i><i></i><span>katla-ai-social · agent</span><b id="clk">ĐANG CHẠY</b></div>
-          <div class="log" id="log"></div>
-          <div class="cal">
-            <div class="cal-h"><span>LỊCH ĐĂNG THÁNG</span><span id="calCount">0 bài</span></div>
-            <div class="cal-g" id="cal"></div>
+        <div class="studio reveal" id="studio" aria-hidden="true">
+          <div class="st-in">
+            <div class="st-top"><img src="img/brand/katla-ai-trang.svg" alt="" width="86" height="16"><span class="pill" id="stPill"><i></i><em id="stStatus" style="font-style:normal">Đang lập kế hoạch</em></span></div>
+            <div class="post">
+              <div class="thumb" id="stThumb"><img src="img/case-study/tp-1.jpg" alt=""><span class="scan"></span><span class="badge">Ảnh + Reels 9:16</span><span class="stamp"><span>✓ Đã duyệt</span></span></div>
+              <div class="copy">
+                <span class="meta2" id="stMeta">Bài 20/10 · Pillar thương hiệu</span>
+                <h4 id="stTitle"></h4>
+                <div class="ln"><i data-w="100%"></i></div>
+                <div class="ln"><i data-w="92%"></i></div>
+                <div class="ln"><i data-w="64%"></i></div>
+                <div class="plats" id="stPlats"><span class="plat">Facebook</span><span class="plat">Instagram</span><span class="plat">TikTok</span><span class="plat">YouTube</span><span class="plat">LinkedIn</span><span class="plat">Threads</span></div>
+              </div>
+            </div>
+            <div class="st-foot">
+              <div>
+                <div class="st-log" style="margin-bottom:10px">Lịch tuần này · <b id="stLog">22 bài cả tháng</b></div>
+                <div class="week" id="stWeek"></div>
+              </div>
+              <svg class="spark" id="stSpark" viewBox="0 0 120 56"><defs><linearGradient id="sg" x1="0" x2="1"><stop offset="0" stop-color="#7FC4D4"/><stop offset="1" stop-color="#FF6B2C"/></linearGradient></defs><text x="0" y="10">Tương tác 48 giờ</text><path d="M2 50 C18 46 24 40 36 38 S56 30 66 26 S88 22 96 14 S112 10 118 6"/></svg>
+            </div>
           </div>
-          <div class="legend"><span><i style="background:rgba(46,110,128,.6)"></i>Bài ảnh</span><span><i style="background:rgba(210,67,15,.7)"></i>Video ngắn</span></div>
         </div>
       </div>
     </div>
@@ -477,9 +532,9 @@ footer .legal{flex-basis:100%;font-size:12.5px;padding-top:14px;border-top:1px s
           <div class="specs"><span>1080 × 1920</span><span>15 – 60 giây</span><span>Phụ đề tự động</span><span>Kiểm chất lượng ≥ 8/10</span></div>
         </div>
         <figure class="reels reveal"><div aria-hidden="true">
-          <div class="reel r2"><img src="img/case-study/tp-4.jpg" alt="" loading="lazy"></div>
-          <div class="reel r3"><img src="img/case-study/tp-7.jpg" alt="" loading="lazy"></div>
-          <div class="reel r1"><video src="img/case-study/reel-thanh-pham.mp4" poster="img/case-study/reel-thanh-pham.jpg" muted loop playsinline preload="none" data-autoplay></video></div>
+          <div class="reel r2" data-zoom="l"><img src="img/case-study/tp-4.jpg" alt="" loading="lazy"></div>
+          <div class="reel r3" data-zoom="r"><img src="img/case-study/tp-7.jpg" alt="" loading="lazy"></div>
+          <div class="reel r1" data-zoom="in"><video src="img/case-study/reel-thanh-pham.mp4" poster="img/case-study/reel-thanh-pham.jpg" muted loop playsinline preload="none" data-autoplay></video></div>
         </div><figcaption>Thành phẩm thật tháng 10/2026 · video 27 giây dựng bằng AI</figcaption></figure>
       </div>
       <div class="kinds">
@@ -615,9 +670,17 @@ footer .legal{flex-basis:100%;font-size:12.5px;padding-top:14px;border-top:1px s
           <ol class="steps">
             <li><b>1</b><span>Điền họ tên, số điện thoại và chọn gói</span></li>
             <li><b>2</b><span>Nhận cuộc gọi xác nhận và hướng dẫn thanh toán</span></li>
-            <li><b>3</b><span>Setup hệ thống, agent bắt đầu chu kỳ content đầu tiên</span></li>
+            <li><b>3</b><span>Setup hệ thống, agent chạy chu kỳ content đầu tiên</span></li>
           </ol>
-          <div class="contact"><small>Tư vấn trực tiếp · Điện thoại, Zalo</small><span class="phone">0946 922 101</span><span>Diệp Bảo Khánh</span><div class="cta-row"><a class="btn btn-line" href="https://zalo.me/0946922101" target="_blank" rel="noopener">Nhắn Zalo tư vấn</a><a class="btn btn-line" href="https://www.facebook.com/diepbaokhanh" target="_blank" rel="noopener">Facebook</a></div></div>
+          <div class="zalo">
+            <img src="img/brand/zalo-qr-dbk.jpg" alt="Mã QR Zalo Diệp Bảo Khánh" width="132" height="132" loading="lazy">
+            <div class="zalo-tx">
+              <small>Quét mã Zalo để tư vấn trực tiếp</small>
+              <a class="hotline" href="tel:0946922101">0946 922 101</a>
+              <span>Diệp Bảo Khánh</span>
+              <div class="cta-row"><a class="btn btn-line" href="https://zalo.me/0946922101" target="_blank" rel="noopener">Nhắn Zalo</a><a class="btn btn-line" href="https://www.facebook.com/diepbaokhanh" target="_blank" rel="noopener">Facebook</a></div>
+            </div>
+          </div>
         </div>
 
         <div class="card reveal">
@@ -729,37 +792,53 @@ footer .legal{flex-basis:100%;font-size:12.5px;padding-top:14px;border-top:1px s
     new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){v.play().catch(function(){})}else v.pause()})},{threshold:.3}).observe(v);
   });
 
-  // Agent console: nhật ký chạy và lịch đăng tự lấp đầy theo bước
+  // Studio: mô phỏng một bài đi qua 7 bước, chỉ chạy khi khu này hiện trên màn hình
   (function(){
-    var pipe=$("pipe"),log=$("log"),cal=$("cal"),cc=$("calCount");if(!pipe)return;
-    var steps=pipe.querySelectorAll(".step");
-    var LINES=[
-      ['<span class="t">08:30</span> Đọc chuẩn thương hiệu, kết quả tháng trước','gl'],
-      ['<span class="t">08:31</span> Lập kế hoạch: 22 bài, 4 định dạng, 6 kênh','gl'],
-      ['<span class="t">08:40</span> Chờ duyệt kế hoạch… <span class="ac">đã duyệt</span>','ok'],
-      ['<span class="t">09:02</span> Viết bài 20/10: 3 phương án tiêu đề','gl'],
-      ['<span class="t">09:15</span> Dựng ảnh 1080×1350, video 9:16 27 giây','ac'],
-      ['<span class="t">10:05</span> Chờ duyệt bài và media… <span class="ac">đã duyệt</span>','ok'],
-      ['<span class="t">10:06</span> Lên lịch 19:30 · Facebook, Instagram, TikTok','gl'],
-      ['<span class="t">19:30</span> Đã đăng, xác minh đường dẫn bài ✓','ok'],
-      ['<span class="t">+48h</span> Đo tương tác, ghi đề xuất cho kỳ sau','gl']
-    ];
-    var STEP_OF_LINE=[0,0,1,2,3,4,5,5,6];
-    for(var d=0;d<28;d++){cal.appendChild(document.createElement("div"))}
-    var cells=cal.children,plan=[1,3,4,6,8,9,10,12,13,15,16,17,19,20,22,23,24,25,26,27,2,11],vids={4:1,9:1,13:1,17:1,22:1,26:1};
-    var li=0,timer=null,run=false,posted=0;
-    function reset(){log.innerHTML="";li=0;posted=0;for(var k=0;k<cells.length;k++)cells[k].className="";cc.textContent="0 bài";steps.forEach(function(s){s.classList.remove("on","done")})}
-    function tick(){
-      if(!run)return;
-      if(li>=LINES.length){timer=setTimeout(function(){reset();tick()},2600);return}
-      var p=document.createElement("p");p.className=LINES[li][1];p.innerHTML=LINES[li][0];log.appendChild(p);requestAnimationFrame(function(){p.classList.add("in")});
-      while(log.children.length>7)log.removeChild(log.firstChild);
-      var s=STEP_OF_LINE[li];steps.forEach(function(el,k){el.classList.toggle("on",k===s);el.classList.toggle("done",k<s)});
-      if(li===1||li>=6){var n=li===1?8:(li===6?14:22);while(posted<n&&posted<plan.length){var c=cells[plan[posted]];c.className=(vids[plan[posted]]?"v":"p")+" pop";posted++}cc.textContent=posted+" bài"}
-      li++;timer=setTimeout(tick,RM?400:1500);
+    var tl=$("tl"),studio=$("studio");if(!tl||!studio)return;
+    var steps=tl.querySelectorAll(".tl-step"),prog=$("tlProg"),pill=$("stPill"),status=$("stStatus"),title=$("stTitle"),thumb=$("stThumb"),plats=$("stPlats").children,week=$("stWeek"),spark=$("stSpark"),log=$("stLog"),lines=studio.querySelectorAll(".ln i");
+    var W=["T2","T3","T4","T5","T6","T7","CN"],PLAN=[["p"],["v","p"],["p"],["p","v"],["p"],["v"],["p"]];
+    W.forEach(function(d,k){var c=document.createElement("div");c.className="day";var b=document.createElement("div");b.className="bar";PLAN[k].forEach(function(t,j){var i=document.createElement("i");i.className=t;i.style.transitionDelay=(k*90+j*60)+"ms";b.appendChild(i)});c.appendChild(b);var s=document.createElement("span");s.textContent=d;c.appendChild(s);week.appendChild(c)});
+    var TITLE="Gửi yêu thương đến một nửa thế giới";
+    var ST=[["Đang lập kế hoạch","","Lên lịch 22 bài cho 6 kênh"],["Chờ anh chị duyệt","wait","Kế hoạch tháng chờ duyệt"],["Đang viết bài","","Viết 3 phương án tiêu đề"],["Đang dựng hình và video","","Ảnh 1080×1350, Reels 27 giây"],["Đã duyệt","ok","Bài và media đã được duyệt"],["Đã đăng 19:30","ok","Tự đăng, đã xác minh đường dẫn"],["Đang đo 48 giờ","","Ghi đề xuất cho kỳ sau"]];
+    var i=-1,timer=null,typer=null,run=false;
+    function type(){clearInterval(typer);var n=0;title.innerHTML='<span class="car"></span>';typer=setInterval(function(){n++;title.innerHTML=TITLE.slice(0,n)+'<span class="car"></span>';if(n>=TITLE.length){clearInterval(typer);title.textContent=TITLE}},45)}
+    function reset(){clearInterval(typer);title.textContent="";thumb.className="thumb";lines.forEach(function(l){l.style.width="0"});[].forEach.call(plats,function(p){p.classList.remove("live")});week.classList.remove("fill");spark.classList.remove("draw")}
+    function go(k){
+      i=k;if(i===0)reset();
+      steps.forEach(function(s,j){s.classList.toggle("on",j===i);s.classList.toggle("done",j<i)});
+      var on=steps[i];prog.style.height=(on.offsetTop+18-14)+"px";
+      status.textContent=ST[i][0];pill.className="pill"+(ST[i][1]?" "+ST[i][1]:"");log.textContent=ST[i][2];
+      if(i===0)week.classList.add("fill");
+      if(i===2){type();lines.forEach(function(l,j){setTimeout(function(){l.style.width=l.dataset.w},900+j*350)})}
+      if(i===3){thumb.className="thumb build";setTimeout(function(){thumb.className="thumb build show"},900);setTimeout(function(){thumb.className="thumb show"},1900)}
+      if(i===4)thumb.className="thumb show approved";
+      if(i===5){thumb.className="thumb show";[].forEach.call(plats,function(p,j){setTimeout(function(){p.classList.add("live")},j*220)})}
+      if(i===6)spark.classList.add("draw");
     }
-    if(RM){run=true;for(var z=0;z<LINES.length;z++)tick();run=false;return}
-    if("IntersectionObserver" in window){new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting&&!run){run=true;tick()}else if(!e.isIntersecting){run=false;clearTimeout(timer)}})},{threshold:.25}).observe(log)}else{run=true;tick()}
+    function tick(){if(!run)return;go((i+1)%steps.length);timer=setTimeout(tick,i===steps.length-1?4200:2800)}
+    steps.forEach(function(s,k){s.addEventListener("click",function(){clearTimeout(timer);for(var z=0;z<=k;z++)go(z);if(run)timer=setTimeout(tick,4000)})});
+    if(RM){for(var z=0;z<steps.length;z++)go(z);return}
+    if("IntersectionObserver" in window){new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting&&!run){run=true;tick()}else if(!e.isIntersecting&&run){run=false;clearTimeout(timer)}})},{threshold:.3}).observe(studio)}else{run=true;tick()}
+  })();
+
+  // Chống rớt dòng một chữ: nối 2 chữ cuối bằng khoảng trắng không ngắt
+  (function(){
+    document.querySelectorAll("h1,h2,h3,h4,p,li,summary,.ans,figcaption,.tl-step span,.app span,.kind span,.ctrl-g span,.v-steps span,.stats span,.desc,.head p").forEach(function(el){
+      var w=document.createTreeWalker(el,NodeFilter.SHOW_TEXT),last=null,n;while(n=w.nextNode()){if(n.nodeValue.trim())last=n}
+      if(last&&last.parentNode.closest&&!last.parentNode.closest("script,style")){var t=last.nodeValue,m=t.match(/^([\s\S]*\S)\s+(\S+\s*)$/);if(m&&m[2].trim().length<14)last.nodeValue=m[1]+"\u00A0"+m[2]}
+    });
+  })();
+
+  // Hiệu ứng cuộn: video phóng to khi vào giữa màn hình, thu nhỏ khi cuộn qua
+  (function(){
+    if(RM)return;var els=[].slice.call(document.querySelectorAll("[data-zoom]"));if(!els.length)return;var ticking=false;
+    function upd(){ticking=false;var vh=innerHeight;els.forEach(function(el){var r=el.getBoundingClientRect(),c=(r.top+r.height/2-vh/2)/vh;c=Math.max(-1,Math.min(1,c));var k=el.dataset.zoom,a=Math.abs(c);
+      if(k==="hero"){var p=Math.max(0,-c);el.style.transform="scale("+(1-p*.22).toFixed(3)+") translateY("+(p*40).toFixed(1)+"px)";el.style.opacity=(1-p*.6).toFixed(2)}
+      else if(k==="in"){el.style.transform="scale("+(1.06-a*.26).toFixed(3)+")"}
+      else if(k==="l"){el.style.transform="translateX("+(-a*40).toFixed(1)+"px) rotate("+(-7-a*6).toFixed(2)+"deg) scale("+(1-a*.12).toFixed(3)+")"}
+      else if(k==="r"){el.style.transform="translateX("+(a*40).toFixed(1)+"px) rotate("+(7+a*6).toFixed(2)+"deg) scale("+(1-a*.12).toFixed(3)+")"}
+    })}
+    addEventListener("scroll",function(){if(!ticking){ticking=true;requestAnimationFrame(upd)}},{passive:true});addEventListener("resize",upd);upd();
   })();
 
   function plan(){var r=form.querySelector('input[name="plan"]:checked');return r?r.value:"1"}
